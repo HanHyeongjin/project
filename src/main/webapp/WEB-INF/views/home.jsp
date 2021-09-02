@@ -4,11 +4,12 @@
 <head>
 	<title>Main</title>	
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>	
+	<link rel="stylesheet" type="text/css" href="resources/myLib/footerStyle.css">
 </head>
 <body>	
 		
 	<div style="position: fixed; z-index: 50">
-		<jsp:include page="/WEB-INF/views/game/header.jsp" flush="true" />
+		<jsp:include page="/WEB-INF/views/headfoot/header.jsp" flush="true" />
 	</div>
 	<div style="position: relative;">
 		<img src="resources/image/space.jpg" width="100%" height="400px">	
@@ -17,5 +18,6 @@
 		 	사이트 이름
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
 </body>
 </html>

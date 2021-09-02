@@ -13,7 +13,8 @@
 	<div class="topbar">
 		<div class="headerbar" id="headerbar">
 			<a href="loginf" class="mheader" id="login">로그인</a>&nbsp;&nbsp;
-			<a href="joinf" class="mheader" id="join">회원가입</span><br></div>
+			<a href="joinf" class="mheader" id="join">회원가입</a>
+		</div>
 		<div class="menubar" id="menubar">
 			<a href="home" class="menu">사이트 이름</a>
 			<a href="gameinsertf" class="menu">소개</a>

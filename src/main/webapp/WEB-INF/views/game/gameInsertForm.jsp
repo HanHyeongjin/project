@@ -21,7 +21,7 @@
 </style>
 </head>
 <body>
-<div style="position: fixed; z-index: 50"><jsp:include page="/WEB-INF/views/game/header.jsp" flush="true" /></div>
+<div style="position: fixed; z-index: 50"><jsp:include page="/WEB-INF/views/headfoot/header.jsp" flush="true" /></div>
 <div style="position: relative;">
 		<img src="resources/image/space.jpg" width="100%" height="400px">	
 		<div style="position: absolute; width: 100%; bottom: 140px;
@@ -62,6 +62,7 @@
 			<tr><td></td><td colspan="4" align ="right"><input type="submit" value="추가하기"></td></tr>
 		</table>
 	</form>
+	<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
 
 </body>
 </html>
