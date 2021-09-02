@@ -33,8 +33,12 @@
   <tr><td class="blind">비밀번호 확인</td></tr>
   <tr><td><input type="password" name="password2" id="password2" autocomplete="off" placeholder="비밀번호를 한번더 입력하세요" title="비밀번호">
   </td></tr>
+  <tr><td class="blind">이름</td></tr>
+  <tr><td><input type="text" name="name" id="name" placeholder=""> </td></tr>
   <tr><td class="blind">닉네임</td></tr>
-  <tr><td><input type="text" name="name" id="name" placeholder=""> </td></tr>  
+  <tr><td><input type="text" name="nickname" id="nickname" placeholder=""> </td></tr>  
+  <tr><td class="blind">핸드폰 번호</td></tr>
+  <tr><td><input type="tel" name="tel" id="tel" placeholder=""> </td></tr>  
   <tr><td class="blind">이메일 주소</td></tr><tr>
   <tr><td><input type="email" name="email" id="email" placeholder="" > </td></tr>  
   <tr><td align="right" style="margin-right: 0;"><input type="submit" name="signup_submit" id="signup-submit" value="회원가입하기"></td></tr>

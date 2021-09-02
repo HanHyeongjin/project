@@ -29,16 +29,16 @@
 			<tr><td class="login-id-box"><input type="text" name="id" id="id" placeholder="아이디" title="아이디"><br>
 			<span id="iMessage" class="eMessage"></span></td>
 			</tr>
-			<tr><td class="login-id-box"><input type="password" name="password" id="password" placeholder="비밀번호"><br>
+			<tr><td class="login-id-box"><input type="password" name="password" id="password1" placeholder="비밀번호"><br>
 			<span id="pMessage" class="eMessage"></span></td>
 			</tr>
 			<tr><td class="login-id-box"><input type="submit"  class="button_login"  value="로그인" onclick="return inCheck()">&nbsp;</td>
 			</tr>
 			<tr>
 				<td>
-					<a href="home">아이디 찾기</a>&nbsp;<span class="bar">&nbsp;&nbsp;|</span>
-					<a href="home">비밀번호 찾기</a>&nbsp;<span class="bar">&nbsp;|&nbsp;</span>
-					<a href="joinf">회원가입</a>&nbsp;
+					<a href="findid"><b>아이디 찾기</b></a>&nbsp;<span class="bar">&nbsp;&nbsp;|</span>
+					<a href="findpassword"><b>비밀번호 찾기</b></a>&nbsp;<span class="bar">&nbsp;|&nbsp;</span>
+					<a href="joinf"><b>회원가입</b></a>&nbsp;
 				</td>
 			</tr>		
 		</table></form>	

@@ -18,6 +18,19 @@ public class MemberController {
 	MemberService service;
 	
 	
+	@RequestMapping(value = "/findpassword")
+	public ModelAndView findpassword(ModelAndView mv) {
+		mv.setViewName("member/findpassword");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value = "/findid")
+	public ModelAndView findid(ModelAndView mv) {
+		mv.setViewName("member/findid");
+		return mv;
+	}
+	
 	@RequestMapping(value = "/loginf")
 	public ModelAndView loginf(ModelAndView mv) {
 		mv.setViewName("member/loginForm");

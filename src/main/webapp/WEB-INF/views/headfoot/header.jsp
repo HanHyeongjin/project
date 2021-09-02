@@ -10,6 +10,8 @@
 	<script src="resources/myLib/header.js"></script>
 </head>
 <body>
+
+
 	<div class="topbar">
 		<div class="headerbar" id="headerbar">
 			<a href="loginf" class="mheader" id="login">로그인</a>&nbsp;&nbsp;
