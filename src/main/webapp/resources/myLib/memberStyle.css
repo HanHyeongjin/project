@@ -1,0 +1,54 @@
+ .login-id-box{
+	margin: 0px 10px 8px 10px;
+    padding: 10px;
+    border: solid 1px #dadada;
+    width: 550px;
+    background-color: rgba( 255, 255, 255, 0.5 );
+    
+} 
+
+ #id {
+ width: 500px;
+ height: 50px;
+ }
+ 
+ #password {
+ width: 500px;
+ height: 50px;
+ }
+ 
+ #email {
+ width: 500px;
+ height: 50px;
+ }
+ 
+ #name {
+ width: 500px;
+ height: 50px;
+ }
+ 
+ .container{
+    width: 600px; height: 300px;
+	position: absolute;
+    left: 50%; top: 50%;
+	margin-left:-300px;
+	margin-top:-150px;
+} 
+
+#signup-submit{
+	position: absolute;
+	left: 400px;
+	
+}
+#btn_top {
+	position: fixed;
+	right: 2%;
+	bottom: 50px;
+	display: none;
+	z-index: 9999;
+	cursor: pointer;
+}
+
+a:hover {
+	color: Dimgray; font-size: 1.0em;
+}

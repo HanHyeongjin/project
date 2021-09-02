@@ -1,73 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>** Spring LoginForm **</title>
-<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
-<script src="resources/myLib/jquery-3.2.1.min.js"></script>
-<script src="resources/myLib/inCheck.js"></script>
-<script src="resources/myLib/axTest01.js"></script>	
+<title>로그인</title>
+	<link rel="stylesheet" type="text/css" href="resources/myLib/memberStyle.css">
+	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
+</head>
+<head>
 <script>
-// 1. 전역변수 정의
-// => 스위치 변수
-	var iCheck = false;
-	var pCheck = false;
-	$(function(){
-		// 2. 개별컬럼 무결성 점검 
-		// => jQuery, focusout
-		$('#id').focus();
-		$('#id').focusout(function(){
-			iCheck = idCheck();
-		}); //id_focusout
-		
-		$('#password').focusout(function() {
-		pCheck =pwCheck();			
-		}); //password focusout
-	}); // ready		
-	// 3. submit처리
-	function inCheck() {
-		if(iCheck==false){ 
-			$('#iMessage').html('ID입력 오류입니다.');
-		}
-		if(paCheck==false){
-			$('#paMessage').html('Password입력 오류입니다.');
-		}
-		if(iCheck && paCheck){
-			alert('입력 완료, 회원 가입 됩니다 ');
-			return true;
-		}else return false;	
-	} // inCheck
+
 </script>
 </head>
-<body>
-<h2>** Spring MyBatis LoginForm **</h2>
-<br>
-<table>
-<!-- <form action="/Web02/login" method="get">  -->
-<!-- FrontController Test -->
-<form action="login" method="get">
-	<tr align="center"><td bgcolor="gray">I D</td>
-	<td><input type="text" name="id" value="banana" id="id"><br>
-	<span id="iMessage" class="eMessage"></span></td></tr>
-	<tr align="center"><td bgcolor="gray">Password</td><td>
-	<input type="password" name="password" value="!123qwe" id="password"><br>
-	<span id="paMessage" class="eMessage"></span></td></tr>
-		<tr><td></td>
-		<td align="right"><input type="submit" value="login" onclick="return inCheck()">&nbsp;&nbsp;
-		<input type="reset" value="Cancel"><br>
-		<span id="alogin" class="textLink">AxLogin</span>&nbsp;&nbsp;
-		<span id="jslogin" class="textLink">JsonLogin</span>
-		</td></tr>
-</form></table>
-<br>
-<c:if test="${message != null}">
-	<br>${message}<br><br>
-</c:if>
-<hr>
-<a href="home">Home</a>&nbsp;&nbsp;
+<body>	
+    <div style="position: fixed; z-index: 50"><jsp:include page="/WEB-INF/views/game/header.jsp" flush="true" /></div>
+	<div style="position: relative;">
+		<img src="resources/image/space.jpg" width="100%" height="400px">	
+		<div style="position: absolute; width: 100%; bottom: 140px;
+			 font-size: 4em; font-weight: bold; color: white" align="center">
+			 로그인
+		</div>
+	</div>
+
+	 <div align="center" class="container">
+		<form action="login" method="get" class="login-id-box">
+		  <table>
+			<tr><td class="login-id-box"><input type="text" name="id" id="id" placeholder="아이디" title="아이디"><br>
+			<span id="iMessage" class="eMessage"></span></td>
+			</tr>
+			<tr><td class="login-id-box"><input type="password" name="password" id="password" placeholder="비밀번호"><br>
+			<span id="pMessage" class="eMessage"></span></td>
+			</tr>
+			<tr><td class="login-id-box"><input type="submit"  class="button_login"  value="로그인" onclick="return inCheck()">&nbsp;</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="home">아이디 찾기</a>&nbsp;<span class="bar">&nbsp;&nbsp;|</span>
+					<a href="home">비밀번호 찾기</a>&nbsp;<span class="bar">&nbsp;|&nbsp;</span>
+					<a href="joinf">회원가입</a>&nbsp;
+				</td>
+			</tr>		
+		</table></form>	
+	 </div> 
+		<c:if test="${message != null}">
+			<br>${message}<br><br>	
+		</c:if>
+
 </body>
 </html>
