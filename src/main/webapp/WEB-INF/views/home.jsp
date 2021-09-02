@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="resources/myLib/footerStyle.css">
 </head>
 <body>	
-		
+	
 	<div style="position: fixed; z-index: 50">
 		<jsp:include page="/WEB-INF/views/headfoot/header.jsp" flush="true" />
 	</div>
@@ -18,6 +18,10 @@
 		 	사이트 이름
 		</div>
 	</div>
+	<div style=" font-size: 4em; font-weight: bold; color: black" align="center"">
+	메인 컨텐츠
+	</div>
 	<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
+	
 </body>
 </html>
