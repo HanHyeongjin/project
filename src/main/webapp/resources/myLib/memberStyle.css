@@ -33,7 +33,7 @@
  height: 50px;
  }
  
- #password1 {
+ #password {
  width: 99%;
  height: 50px;
  }
@@ -62,15 +62,26 @@
  height: 50px;
  }
  
- #next_button{
+  #next_button{
  	border-radius: 10px;
+ 	cursor: pointer;
  	width: 70px;
  	height: 70px;
  	background-color: black;
  	color: orange;
  	text-align: center;
  	font-size: 1.3em;
- }
+ 	
+ } 
+ 
+
+ 
+ /* Error Message */
+.eMessage{
+	color: red;
+	font-style: italic;
+	font-size: x-small;
+}
 
 a:hover {
 	color: Dimgray; font-size: 1.0em;

@@ -5,7 +5,7 @@ public class UserVo {
 	private String name;
 	private String email;
 	private String nickname;
-	private int tel;
+	private String tel;
 	private String level;
 	private String sessiontime;
 	
@@ -46,10 +46,11 @@ public class UserVo {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public int getTel() {
+
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	@Override

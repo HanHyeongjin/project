@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비밀번호 찾기</title>
 <link rel="stylesheet" type="text/css" href="resources/myLib/memberStyle.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 </head>
@@ -20,14 +20,14 @@
 <table align="center">
 	<tr><td align="center"></td>
 	<tr><td class="blind">아이디&nbsp;</td></tr>
-	<tr><td style="padding-bottom: 20px"><input type="text" size="20" class="id"></td></tr>
+	<tr><td style="padding-bottom: 20px"><input type="text" size="40" style="height: 30px" class="id"></td></tr>
 	<tr><td class="blind">이메일&nbsp;</td></tr>
-	<tr><td><input type="email" size="20" id="domain" name="email">@
-	  <input type="email" id="domain" size="20" name="email">
+	<tr><td><input type="email" size="40" style="height: 30px" id="domain" name="email">@
+	  <input type="email" id="domain" size="40" style="height: 30px" name="email">
 	  </td>
 	</tr>
   <tr>
-  <td align="right" style="margin-right: 0"><input id="next_button" value="확인"></td>
+  <td align="right" style="padding-top: 20px" class="blind"><input type="submit" id="next_button" class="button_login" value="확인"></td>
   </tr>
 </table>	
 
