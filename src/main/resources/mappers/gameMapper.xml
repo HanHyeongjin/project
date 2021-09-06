@@ -4,6 +4,9 @@
 <mapper namespace="green.mapper.GameMapper">
 
 
+ <select id="gameInfo" resultType="vo.GameVO">
+ 	select gname,gservice,categories2,,rec,grade,
+ </select>
  
 <select id="gameList" resultType="vo.GameVO">
 	select gname, categories2, grade, (SELECT  COUNT(*)
@@ -17,7 +20,7 @@
 	</selectKey>
 	insert into game values(
 	#{idno},#{gname},#{gservice},#{categories1},#{categories2},
-	#{rec},#{grade},#{contents},#{img})
+	#{rec},#{grade},#{contents},#{rating},#{reldate},#{img})
 </insert>
 	
 

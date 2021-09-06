@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import service.GameService;
 import vo.GameVO;
@@ -21,15 +22,31 @@ public class GameController {
 	@Autowired
 	GameService service;
 	
+	//게임 정보 출력
+	@RequestMapping(value = "/gameinfo")
+	public ModelAndView gameinfo(HttpServletRequest request, ModelAndView mv, 
+			GameVO vo, RedirectAttributes rttr) {
+		vo=service.gameInfo(vo);
+		if(vo !=null) {
+			mv.setViewName("game/gameInfo");
+		}else {
+			rttr.addFlashAttribute("message", "해당하는 게시물을 찾을 수 없습니다 ~~");
+			mv.setViewName("redirect:gamelist"); 
+		}
+		return mv;
+	}
 	
+	
+	//게임 추가 화면
 	@RequestMapping(value = "/gameinsertf")
-	public ModelAndView gamejoinf(ModelAndView mv) {
+	public ModelAndView gameinsertf(ModelAndView mv) {
 		mv.setViewName("game/gameInsertForm");
 		return mv;
-	} //joinf
+	} //gameinsertf
 	
+	//게임 추가
 	@RequestMapping(value = "/gameinsert")
-	   public ModelAndView join(HttpServletRequest request, ModelAndView mv, GameVO vo)throws IOException {
+	   public ModelAndView gameinsert(HttpServletRequest request, ModelAndView mv, GameVO vo)throws IOException {
 	  
 	      String realPath = request.getRealPath("/"); //deprecated Method
 
@@ -66,9 +83,9 @@ public class GameController {
 	         mv.setViewName("game/gameInsertForm");
 	      }
 	      return mv;
-	   } //join
+	   } //gameinsert
 	 
-	
+	//게임 리스트 출력
 	@RequestMapping(value = "/gamelist")
 	public ModelAndView gamelist(ModelAndView mv) {
 
@@ -80,6 +97,6 @@ public class GameController {
 		}
 		mv.setViewName("game/gameList");
 		return mv;
-	} //mlist
+	} //gamelist
 	
 }//class

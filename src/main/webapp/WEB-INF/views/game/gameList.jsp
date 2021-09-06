@@ -23,7 +23,7 @@
 			<th>순위</th><th>게임명</th><th>장르</th><th>평점</th></tr>
 		<c:forEach var="list" items="${games}" >
 		<tr height="30" align="center">
-			<td>${list.grank}</td><td>${list.gname}</td>
+			<td>${list.grank}</td><td><a href="gameinfo?idno=${list.idno}">${list.gname}</a></td>
 			<td>${list.categories2}</td><td>${list.grade}</td>	
 		</tr>
 	</c:forEach>

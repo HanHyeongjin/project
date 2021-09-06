@@ -3,60 +3,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="green.mapper.MemberMapper">
- <!-- nameSpace : 자바클래스에서 mapper를 찾는 경로
- 					다른 mapper와 중복되지 않도록 네임스페이스 기재
- 					
- ** Mybatis
- 	=> PreparedStatement 처리가 기본
- 	=> 자동으로 DB Close() 해줌
- 	
- 	** #{id}
- 	=> parameter로 전달된 vo의 id라는 컬럼의 value가 전달됨
- 	=> getID() or setID("..") : getter 또는 setter에 오타가 없어야함
- 	=> 해당되는 값
- 	=> Map 타입의 경우 키값이 id인 값을 찾음
- 	
- 	** #{id} : id라는 필드 표현
- 	
- ** SQL 쿼리문에서 비교연산자 사용하는 경우  
-    XML에서는  <,>등 비교연산자의 경우 XML규칙상 에러 나기때문에,
-    이기호를 연산자로 인식하도록 하기 위해서는 SQL문을 CDATA로 묶어 주어야 한다.
-    <![CDATA[ SELECT * FROM table WHERE id > 1 ]]> 
-   
- ** checkSelectList 
-=> select * from member where lev in ('A','B','C') order by id asc (추천)
-=> select * from member where lev='A'OR lev='B' lev='C' order by id asc(비추천)
-
-=> collection : list 또는 array Type 의 매개변수 (vo에 정의된 변수 사용)   
-   item : collection 의  데이터 를 1건씩 전달 받으며 위의 구문을 완성함.    
-   index : 필요시 사용,  0 부터 시작 (0,1,2...) 
-   <foreach ...index="index"..>   
-                 ...... "${index}" : index 값 사용하기 
-                      사용하지 않는경우 아래처럼 표시해도 되고, 생략해도됨.
-   <foreach .... index="" open="(" close=")" separator=",">       
-   -->
 
 
- 	<select id="selectList" resultType="vo.MemberVO">
- 		select * from member where id != 'admin' order by id
- 	</select>
- 	
- 	<select id="selectOne" resultType="vo.MemberVO">
- 		select * from member where id = #{id}
- 	</select>
- 	<!-- #{id}: parameter로 전달된 vo의 id라는 컬럼의 value가 전달됨-->
  	
  	<insert id="insert">
  		insert into member values(
- 		#{id}, #{password}, #{name},#{lev}, email = #{email}
+ 		#{id}, #{password}, #{name},#{lev},#{email});
  	</insert>
- 	
- 	<update id="update">
- 		update member set password = #{password}, name=#{name},lev=#{lev} , email = #{email} where id= #{id}
- 	</update>
- 	
- 	<delete id="delete">
- 		delete from member where id=#{id}" ;
- 	</delete>
- 
+ 	 
  </mapper>
