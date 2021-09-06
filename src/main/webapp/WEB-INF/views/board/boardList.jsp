@@ -129,5 +129,6 @@ $(function() {
 <br><hr>	
 <script type="https://ajax.googleapos.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>	
 <script type="text/javascript" src="js/bootstrap.js"></script>
+<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
 </body>
 </html>
