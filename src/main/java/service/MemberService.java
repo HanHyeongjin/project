@@ -11,6 +11,5 @@ public interface MemberService {
 	MemberVO selectOne(MemberVO vo);
 	
 	int insert(MemberVO vo);
-	int delete(MemberVO vo);
 
 }

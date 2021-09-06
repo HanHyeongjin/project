@@ -7,35 +7,9 @@
 <title>로그인</title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/memberStyle.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
+</head>
+<head>
 <script>
-
-var iCheck=false;
-var pCheck=false;
-
-$(function(){
-	$('#id').focus();
-	$('#id').focusout(function(){
-		iCheck=idCheck();
-		
-	})//id_focusout
-	
-	$('#password').focusout(function() {
-		pCheck=pwCheck();
-		
-	}); //password_focusout
-	
-}); //ready
-
-function inCheck(){
-	if(iCheck == false){
-		$('#iMessage').html('ID를 입력하세요');
-	}
-	if(pCheck == false){
-		$('#pMessage').html('PassWord를 입력하세요');
-	}
-	if(iCheck && pCheck) return true;
-	else return false;
-}//incheck
 
 </script>
 </head>
@@ -62,9 +36,9 @@ function inCheck(){
 			</tr>
 			<tr>
 				<td>
-					<a href="findid"><b>아이디 찾기</b></a>&nbsp;<span class="bar">&nbsp;&nbsp;|</span>
-					<a href="findpassword"><b>비밀번호 찾기</b></a>&nbsp;<span class="bar">&nbsp;|&nbsp;</span>
-					<a href="joinf"><b>회원가입</b></a>&nbsp;
+					<a href="home">아이디 찾기</a>&nbsp;<span class="bar">&nbsp;&nbsp;|</span>
+					<a href="home">비밀번호 찾기</a>&nbsp;<span class="bar">&nbsp;|&nbsp;</span>
+					<a href="joinf">회원가입</a>&nbsp;
 				</td>
 			</tr>		
 		</table></form>	
@@ -72,6 +46,6 @@ function inCheck(){
 		<c:if test="${message != null}">
 			<br>${message}<br><br>	
 		</c:if>
-<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
+
 </body>
 </html>

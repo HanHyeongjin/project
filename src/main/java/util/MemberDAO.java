@@ -16,7 +16,7 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	private static final String NS = "green.mapper.memberMapper";
+	private static final String NS = "green.ncs.mapper.MemberMapper";
 	
 	public List<MemberVO> selectList(){
 		return sqlsession.selectList(NS+"selectList");
@@ -28,10 +28,6 @@ public class MemberDAO {
 	
 	public int insert(MemberVO vo) {
 		return sqlsession.insert(NS+"insert",vo);
-	}
-	
-	public int delete(MemberVO vo) {
-		return sqlsession.delete(NS+"delete",vo);
 	}
 
 

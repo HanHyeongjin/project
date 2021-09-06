@@ -4,8 +4,6 @@ public class UserVo {
 	private String id;
 	private String name;
 	private String email;
-	private String nickname;
-	private String tel;
 	private String level;
 	private String sessiontime;
 	
@@ -40,23 +38,10 @@ public class UserVo {
 		this.sessiontime = sessiontime;
 	}
 	
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
 	@Override
 	public String toString() {
-		return "UserVo [id=" + id + ", name=" + name + ", email=" + email + ", nickname=" + nickname + ", tel=" + tel
-				+ ", level=" + level + ", sessiontime=" + sessiontime + "]";
+		return "UserVo [id=" + id + ", name=" + name + ", email=" + email + ", level=" + level + ", sessiontime="
+				+ sessiontime + "]";
 	}
 	
 	

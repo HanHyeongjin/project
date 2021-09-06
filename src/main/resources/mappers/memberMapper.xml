@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
- <mapper namespace="green.mapper.memberMapper">
+ <mapper namespace="green.mapper.MemberMapper">
  <!-- nameSpace : 자바클래스에서 mapper를 찾는 경로
  					다른 mapper와 중복되지 않도록 네임스페이스 기재
  					
@@ -48,15 +48,15 @@
  	
  	<insert id="insert">
  		insert into member values(
- 		#{id}, #{password}, #{name}, #{nickname}, #{tel}, #{email} )
+ 		#{id}, #{password}, #{name},#{lev}, email = #{email}
  	</insert>
  	
  	<update id="update">
- 		update member set password = #{password}, name=#{name}, nickname=#{nickname}, tel=#{tel} , email = #{email} where id= #{id}
+ 		update member set password = #{password}, name=#{name},lev=#{lev} , email = #{email} where id= #{id}
  	</update>
  	
  	<delete id="delete">
- 		delete from member where id=#{id} 
+ 		delete from member where id=#{id}" ;
  	</delete>
  
  </mapper>
