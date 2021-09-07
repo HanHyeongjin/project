@@ -17,7 +17,7 @@
 			 게임 순위
 		</div>
 	</div>
-	
+	${messge}
 	<table  style="width: 50%;  margin-top: 30px; position: relative;" align = "center">
 		<tr height="30" bgcolor="LightSteelBlue ">
 			<th>순위</th><th>게임명</th><th>장르</th><th>평점</th></tr>

@@ -19,7 +19,7 @@
 			<a href="home" class="menu">사이트 이름</a>
 			<a href="gameinsertf" class="menu">소개</a>
 			<a href="gamelist" class="menu">공지사항</a>
-			<a href="gamelist" class="menu">게시판</a>
+			<a href="blist" class="menu">게시판</a>
 			<a href="gamelist" class="menu">게임 순위</a>
 			<span class="menu"><input type="search"><button>검색</button></span>
 		</div>

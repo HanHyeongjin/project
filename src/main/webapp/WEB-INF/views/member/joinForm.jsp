@@ -42,7 +42,5 @@
 <c:if test="${message != null}">
 	<br>${message}<br><br>	
 </c:if>
-
-<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
 </body>
 </html>

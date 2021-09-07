@@ -22,12 +22,15 @@ public class GameController {
 	@Autowired
 	GameService service;
 	
+	
+	
 	//게임 정보 출력
 	@RequestMapping(value = "/gameinfo")
 	public ModelAndView gameinfo(HttpServletRequest request, ModelAndView mv, 
-			GameVO vo, RedirectAttributes rttr) {
+	GameVO vo, RedirectAttributes rttr) {		
 		vo=service.gameInfo(vo);
 		if(vo !=null) {
+			request.setAttribute("game",vo);
 			mv.setViewName("game/gameInfo");
 		}else {
 			rttr.addFlashAttribute("message", "해당하는 게시물을 찾을 수 없습니다 ~~");

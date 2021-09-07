@@ -17,7 +17,7 @@ public class GameDAO {
 	
 	
 public GameVO gameInfo(GameVO vo) {		
-		return  sqlSession.selectOne(NS+"gameInfo",vo);
+		return sqlSession.selectOne(NS+"gameInfo",vo);
 	}
 	public List<GameVO> gameList() {
 		return sqlSession.selectList(NS+"gameList");
