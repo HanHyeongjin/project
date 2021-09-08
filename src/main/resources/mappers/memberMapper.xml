@@ -8,11 +8,6 @@
  	<select id="selectOne" resultType="vo.MemberVO">
  		select * from pmember where id = #{id}
  	</select>
- <!-- nameSpace : 자바클래스에서 mapper를 찾는 경로
- 					다른 mapper와 중복되지 않도록 네임스페이스 기재-->
- 					
-
-
  	
  	<insert id="insert">
  		insert into pmember values(
@@ -20,15 +15,12 @@
 
  	</insert>
  	
-
- 	 
-
  	<update id="update">
  		update member set password = #{password}, name=#{name},lev=#{lev} , email = #{email} where id= #{id}
  	</update>
  	
  	<delete id="delete">
- 		delete from member where id=#{id}" ;
+ 		delete from member where id=#{id}" 
  	</delete>
  
  </mapper>

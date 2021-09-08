@@ -7,7 +7,7 @@
 <title>로그인</title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/memberStyle.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
-	<script src="resources/myLib/incheck.js"></script>
+	<script src="resources/myLib/inCheck.js"></script>
 </head>
 <head>
 <script>

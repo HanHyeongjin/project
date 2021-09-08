@@ -22,8 +22,8 @@ public class MemberDAO {
 		return sqlsession.selectList(NS+"selectList");
 	}
 	
-	public MemberVO selectOne(){
-		return sqlsession.selectOne(NS+"selectOne");
+	public MemberVO selectOne(MemberVO vo){
+		return sqlsession.selectOne(NS+"selectOne",vo);
 	}
 	
 	public int insert(MemberVO vo) {

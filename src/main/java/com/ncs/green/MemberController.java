@@ -28,6 +28,7 @@ public class MemberController {
 	@RequestMapping(value = "/login")
 	public ModelAndView login(HttpServletRequest request, ModelAndView mv, MemberVO vo) {
 		String password =vo.getPassword();
+		System.out.println("vo"+vo);
 		vo = service.selectOne(vo);
 		
 		 HttpSession session = request.getSession();
