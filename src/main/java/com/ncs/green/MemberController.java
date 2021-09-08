@@ -1,8 +1,9 @@
 package com.ncs.green;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,8 +33,8 @@ public class MemberController {
 		 HttpSession session = request.getSession();
 		 if(vo != null) {
 			 if(vo.getPassword().equals(password)) {
-				 request.getSession().setAttribute("loginID", vo.getId());
-				 request.getSession().setAttribute("loginName", vo.getName());
+				 session.setAttribute("loginID", vo.getId());
+				 session.setAttribute("loginName", vo.getName());
 				 mv.setViewName("redirect:home");
 		 }else {
 			 // 비밀번호 오류
@@ -56,17 +57,16 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/join")
-	public ModelAndView join(ModelAndView mv, MemberVO vo) {
+	public ModelAndView join(ModelAndView mv, MemberVO vo, HttpServletRequest request) throws IOException{
+		System.out.println("***vo"+vo);
 		if(service.insert(vo) > 0) {
 			//성공
-		   mv.addObject("message","회원가입이 완료 되었습니다");
 		   mv.setViewName("member/loginForm");
 		}else {
 			//실패
 		    mv.addObject("message","회원가입이 실패했습니다");
 			mv.setViewName("member/joinForm");
 		}
-		mv.setViewName("member/joinForm");
 		return mv;
 	}//join
 	

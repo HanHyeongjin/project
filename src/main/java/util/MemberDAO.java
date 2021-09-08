@@ -16,7 +16,7 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	private static final String NS = "green.ncs.mapper.MemberMapper";
+	private static final String NS = "green.mapper.MemberMapper.";
 	
 	public List<MemberVO> selectList(){
 		return sqlsession.selectList(NS+"selectList");

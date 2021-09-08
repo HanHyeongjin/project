@@ -7,13 +7,44 @@
 <title>로그인</title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/memberStyle.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
+	<script src="resources/myLib/incheck.js"></script>
 </head>
 <head>
 <script>
+var iCheck=false;
+var pCheck=false;
+
+$(function(){
+	
+$('#id').focus();
+	
+	$('#id').focusout(function(){
+		iCheck=idCheck();
+		
+	})//id_focusout 
+	
+	$('#password1').focusout(function() {
+		pCheck=pwCheck;
+	
+	});
+});
+
+function inCheck(){
+	if(iCheck == false){
+		$('#iMessage').html('ID를 입력하세요');
+		
+	}
+	if(pCheck == false){
+		$('#pMessage').html('PassWord를 입력하세요');
+	}
+	if(iCheck && pCheck) return true;
+	else return false;
+}//incheck
 
 </script>
 </head>
 <body>	
+
     <div style="position: fixed; z-index: 50"><jsp:include page="/WEB-INF/views/headfoot/header.jsp" flush="true" /></div>
 	<div style="position: relative;">
 		<img src="resources/image/space.jpg" width="100%" height="400px">	
@@ -29,7 +60,7 @@
 			<tr><td class="login-id-box"><input type="text" name="id" id="id" placeholder="아이디" title="아이디"><br>
 			<span id="iMessage" class="eMessage"></span></td>
 			</tr>
-			<tr><td class="login-id-box"><input type="password" name="password" id="password" placeholder="비밀번호"><br>
+			<tr><td class="login-id-box"><input type="password" name="password" id="password1" placeholder="비밀번호"><br>
 			<span id="pMessage" class="eMessage"></span></td>
 			</tr>
 			<tr><td class="login-id-box"><input type="submit"  class="button_login"  value="로그인" onclick="return inCheck()">&nbsp;</td>
