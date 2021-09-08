@@ -17,4 +17,6 @@ public class GameVO {
 	private String img;
 	private MultipartFile imgf;
 	private int grank;
+	private String reldate;
+	private int rating;
 }
