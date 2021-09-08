@@ -14,6 +14,12 @@ public class GameServiceimpl implements GameService{
 	GameDAO dao;
 	
 	@Override
+	public GameVO gameInfo(GameVO vo) {
+		
+		return dao.gameInfo(vo);
+	}
+	
+	@Override
 	public List<GameVO> gameList(){
 		return dao.gameList();		
 	}
