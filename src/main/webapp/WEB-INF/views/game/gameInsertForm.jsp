@@ -33,10 +33,10 @@
 		<table style="width: 50%;  margin-top: 30px; position: relative;" align = "center">
 			<tr><td class="td1">게임 이름</td>
 			<td><input type="text" name="gname" id="gname" class="in"></td>
-			<td rowspan="2" class="td1">이미지 선택</td>
-			<td rowspan="2" align="center">
+			<td rowspan="4" class="td1">이미지 선택</td>
+			<td rowspan="4" align="center">
 			<img  src="" class="select_img"><br>
-			<input type="file" name="imgf" id="imgf">
+			<input type="file" name="imgf" id="imgf" style="width: 300px; height: 200px;">
 			<script>
         		 $('#imgf').change(function(){
          		   if(this.files && this.files[0]) {
@@ -55,19 +55,9 @@
 				<input type="radio" id="online" name="categories1" value="온라인">
   				<label for="online">온라인</label><br>
   				<input type="radio" id="mobile" name="categories1" value="모바일">
-  				<label for="mobile">모바일</label>
+  				<label for="mobile">모바일</label><br>
   				</td>
-  				<td class="td1">출시일</td>
-  				<td><input type="month" id="reldate" name="reldate"></td>
-  			</tr>
 			<tr><td class="td1">세부 장르</td><td><input type="text" name="categories2" id="categories2"></td>
-				<td class="td1">등급</td>
-  				<td><select name="rating" id="rating">
-						<option value="0">전체 이용가
-						<option value="12">12세 이용가
-						<option value="15">15세 이용가
-						<option value="18">청소년 이용불가
-				</select></td>
 			<tr><td class="td1">게임 소개</td><td colspan="3"><textarea name="contents" rows="30px" style="width:100%"></textarea></td>
 			<tr><td></td><td colspan="4" align ="right"><input type="submit" value="추가하기"></td></tr>
 		</table>

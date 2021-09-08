@@ -16,9 +16,6 @@ public class GameDAO {
 	private static final String NS = "green.mapper.GameMapper.";
 	
 	
-public GameVO gameInfo(GameVO vo) {		
-		return sqlSession.selectOne(NS+"gameInfo",vo);
-	}
 	public List<GameVO> gameList() {
 		return sqlSession.selectList(NS+"gameList");
 	}
