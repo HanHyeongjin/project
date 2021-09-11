@@ -1,0 +1,116 @@
+
+.hrdiv {
+	padding: 20px;
+	display: flex;	
+	flex-basis: 100%;
+	align-items: center;
+	color: rgba(0, 0, 0, 0.35);
+	font-size: 2em;
+	font-weight : bold;
+	margin: 5% 0 0 0;
+}
+.hrdiv::before{
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+ 
+}
+.hrdiv::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	
+}
+.hrdiv2 {
+	
+	display: flex;	
+	flex-basis: 100%;
+	align-items: center;
+	color: rgba(0, 0, 0, 0.35);
+	font-size: 2em;
+	font-weight : bold;
+	padding: 20px;
+	
+}
+
+.hrdiv2::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	
+}
+.reviewform{
+	margin: 5% 25% 0 25%;
+}
+.title{
+	width: 80%;
+	height: 50px;
+}
+.texttitle{
+	color: rgba(0, 0, 0, 0.35);
+	font-size: 2em;
+}
+.titlediv{
+	width: 50%;
+}
+.titlediv2{
+	width: 50%;
+	
+}
+.submit{
+		
+	background: OrangeRed ;
+	color: white;
+	border: none;
+	border-radius: 15%;
+}
+.submit:hover{
+	background: black ;
+	color:  white;
+	border: none;
+	border-radius: 15%;
+}
+.submitbtn{
+	margin-top: 30px;
+	font-size: 1.5em;
+	border-color: whight;
+}
+.stars{
+	font-size: 4em; color: gray;
+	letter-spacing: -12px;
+}
+#display{
+	text-decoration: none;
+	border: none;
+	text-align: right;
+	color: red;
+	pointer-events: none;
+}
+
+.inputstar{
+	margin: auto;
+	font-size:2.5em;
+	color: red; 
+}
+.star{
+	color: red;
+	cursor:pointer;
+}
+.texttitle span{
+	margin-left: 30%;
+	font-size: 0.5em;
+}
+.texttitle span:hover {
+	color: red;
+	font-weight: bold;
+	cursor:pointer;
+}

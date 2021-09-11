@@ -1,0 +1,85 @@
+
+.maininfo {
+	display: flex;
+	
+}
+.gameinfo{
+	margin:3% 0 0 15%;
+	width : 75%;
+}
+.infotable {	
+	height: 400px
+}
+
+.infobox {
+	background: black;
+	color: white;
+	
+	display: flex;
+}
+
+.infobox2 {
+	margin: auto;
+}
+
+.infobox3 {
+	height: 445px;
+	width: 30%;
+	background: black;
+	margin: 3% 15% 0 2%;
+}
+.box3text{
+	color: orange;
+}
+.reviewf{
+	margin : 5% 0 0 15%;
+	width: 45%;
+}
+.rdiv1{
+	color: rgba(0, 0, 0, 0.35);
+	font-size: 2em;
+}
+.rdiv2 {
+	display: flex;	
+	flex-basis: 100%;
+	align-items: center;
+	color: rgba(0, 0, 0, 0.35);
+	font-size: 1.2em;
+	margin-bottom: 2%
+}
+
+.rdiv2::before {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+}
+.rtable{
+	width: 100%;
+}
+.border{
+	margin-bottom: 5% ;
+	display: flex;
+}
+.rtitle{
+	font-size: 1.5em;
+	margin-bottom: 2%;
+}
+.rdiv3{
+	display: flex;
+}
+.rdiv4{
+	margin-right: 12%
+}
+.score{
+	background: rgba(0, 0, 0, 0.15);
+	width:8%;
+	text-align:center;
+	border-radius :50% 50% 50% 50%;
+	color: orange;
+	font-weight:bold;
+	font-size: 2em;
+	padding-top: 1%
+}

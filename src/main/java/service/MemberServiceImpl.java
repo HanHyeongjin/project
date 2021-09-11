@@ -20,7 +20,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public MemberVO selectOne(MemberVO vo) {
-		return dao.selectOne();
+		return dao.selectOne(vo);
 	}
 
 	@Override
