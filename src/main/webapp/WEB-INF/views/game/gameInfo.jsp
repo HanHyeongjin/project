@@ -7,96 +7,13 @@
 <meta charset="UTF-8">
 <title>Game INFO</title>
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
-
-<style>
-.gameimg {
-	position: relative;
-}
-
-.textbox {
-	background: rgba(0, 0, 0, 0.9);
-	position: absolute;
-	top: 0;
-	height: 300px;
-	width: 100%;
-	padding-top: 100px;
-}
-
-.intext {
-	padding-top: 50px;
-}
-
-.maininfo {
-	display: flex;
-}
-
-.infotable {
-	margin: 30px 0 0 200px;
-	width: 900px;
-	height: 400px
-}
-
-.infobox {
-	background: black;
-	color: white;
-	margin: 0 0 0 200px;
-	width: 900px;
-	display: flex;
-}
-
-.infobox2 {
-	margin: auto;
-}
-
-.infobox3 {
-	height: 445px;
-	width: 400px;
-	background: black;
-	margin: 30px 200px 0 60px;
-}
-.box3text{
-	color: orange;
-}
-</style>
+<link rel="stylesheet" type="text/css"
+	href="resources/myLib/gamelib/detailReview.css">
 </head>
 <body>
-	<div style="position: fixed; z-index: 50"><jsp:include
-			page="/WEB-INF/views/headfoot/header.jsp" flush="true" /></div>
-	<div class="gameimg">
-		<img src="${game.img}" width="100%" height="400px">
-		<div class="textbox">
-			<div style="float: left; text-align: center; margin-left: 200px">
-				<img src="${game.img}" width="200px;" height="200px"><br>
-				<span
-					style="width: 200px; height: 50px; background: black; color: white;">관심목록에
-					추가</span>
-			</div>
-			<div style="float: left;">
-				<span id="intextname" class="intext"
-					style="font-size: 4em; font-weight: bold; color: white">${game.gname}</span><br>
-				<span id="intextservice" class="intext"
-					style="font-size: 1.5em; font-weight: bold; color: white">${game.gservice}</span><br>
-				<div>
-					<c:choose>
-						<c:when test="${game.rating ==0}">
-							<img src="resources/gameImage/ratall.png">
-						</c:when>
-						<c:when test="${game.rating ==12}">
-							<img src="resources/gameImage/rat12.png">
-						</c:when>
-						<c:when test="${game.rating ==15}">
-							<img src="resources/gameImage/rat15.png">
-						</c:when>
-						<c:when test="${game.rating ==18}">
-							<img src="resources/gameImage/rat18.png">
-						</c:when>
-					</c:choose>
-				</div>
-			</div>
-		</div>
-	</div>
+	<jsp:include page="/WEB-INF/views/headfoot/gameTopBar.jsp" flush="true" />
 	<div class="maininfo">
-		<div>
+		<div class="gameinfo">
 			<table class="infotable">
 				<tr>
 					<td style="background: black; font-size: 3em; color: white;"
@@ -139,20 +56,44 @@
 		<div class="infobox3">
 			<div class="box3text">The game 평점</div>
 			<div class="box3text">${game.grade}</div>
-			<div class="box3text">리뷰 쓰기</div>
+			<div class="box3text">
+				<a href="reviewinsertf?idno=${game.idno}">리뷰 쓰기</a>
+			</div>
 			<div class="box3text">리뷰 보기</div>
 		</div>
 	</div>
 
-	<div style="font-weight: bold; font-size: 4em; margin-top: 50px;" align="center">
-		유저 리뷰
-	
+	<div class="reviewf">
+		<div class="rdiv1">유저 리뷰</div>
+		<div class="rdiv2">
+			<a href="#">더보기</a>
+		</div>
+		<div class="rtable">
+			<c:forEach var="list" items="${reviews}">
+					
+		
+				<div class="border">
+					<div style="background: white; width: 80%">
+						<div class="rtitle">
+							<a href="#">${list.rtitle}</a>
+						</div>
+						<div class="rdiv3">
+							<div class="rdiv4">
+								<img src="resources/image/user.png" width="20px" height="20px">
+								${list.nickname}
+							</div>
+							<div class="rdiv4">
+								<img src="resources/image/date.png" width="20px" height="20px">
+								${list.rvredate}
+							</div>
+						</div>
+					</div>
+					<div class="score">${list.score}</div>					
+				</div>
+				<div class="rdiv2"></div>
+			</c:forEach>
+		</div>
 	</div>
-
-
-
-
-
 	<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
 </body>
 </html>

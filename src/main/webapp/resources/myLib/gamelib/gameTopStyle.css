@@ -1,0 +1,19 @@
+
+.textbox {
+	background: rgba(0, 0, 0, 0.9);
+	position: absolute;
+	top: 0;
+	height:40%;
+	width: 100%;
+	
+}
+.topimg{
+	float: left; text-align: center; margin-left: 15%;
+	margin-top: 100px;
+}
+
+.intext {
+	padding-top: 50px;
+	font-weight: bold; 
+	color: white;
+}
