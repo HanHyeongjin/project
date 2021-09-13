@@ -18,6 +18,11 @@ public class ReviewDAO {
 	SqlSession sqlSession;
 	private static final String NS="green.mapper.ReviewMapper.";
 	
+	public ReviewVO reviewDetail(ReviewVO vo) {
+		return sqlSession.selectOne(NS+"reviewDetail",vo);
+	}
+	
+	
 	public List<ReviewVO> rInfoList(ReviewVO vo) {
 		return sqlSession.selectList(NS+"rInfoList",vo);
 	}

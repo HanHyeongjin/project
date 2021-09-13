@@ -36,8 +36,9 @@ public class GameController {
 		if(gvo !=null) {
 			request.setAttribute("game",gvo);
 			
-			if(rlist !=null) {
+			if(rlist !=null && rlist.size() != 0) {
 				request.setAttribute("reviews",rlist);
+				
 			}else {
 				mv.addObject("message", "리뷰가 없습니다. 첫 리뷰를 작성해 주세요!");
 			}mv.setViewName("game/gameInfo");
