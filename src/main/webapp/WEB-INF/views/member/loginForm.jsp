@@ -33,7 +33,7 @@ function inCheck(){
 		$('#iMessage').html('아이디를 입력하세요');
 	}
 	if(pCheck == false){
-		$('#pMessage').html('비밀번호를 입력하세요');
+		$('#pMessage').html('비밀번호가 올바르지 않습니다');
 	}
 	if(iCheck && pCheck) return true;
 	else return false;
@@ -75,17 +75,14 @@ function inCheck(){
 				</tr>
 				<tr>
 					<td>
-						<a href="findid"><b>아이디 찾기</b></a>&nbsp;<span class="bar">&nbsp;&nbsp;|</span>
-						<a href="findpassword"><b>비밀번호 찾기</b></a>&nbsp;<span class="bar">&nbsp;|&nbsp;</span>
+						<a href="findidf"><b>아이디 찾기</b></a>&nbsp;<span class="bar">&nbsp;&nbsp;|</span>
+						<a href="findpasswordf"><b>비밀번호 찾기</b></a>&nbsp;<span class="bar">&nbsp;|&nbsp;</span>
 						<a href="joinf"><b>회원가입</b></a>&nbsp;
 					</td>
 				</tr>		
 			</table>
 			</form>
 		</div>	
-		<c:if test="${message != null}">
-			<br>${message}<br><br>	
-		</c:if>
-
+		<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
 </body>
 </html>

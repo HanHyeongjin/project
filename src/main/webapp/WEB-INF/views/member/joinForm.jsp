@@ -55,7 +55,7 @@ function inCheck(){
 		$('#iMessage').html('아이디를 입력하세요');
 	}
 	if(pCheck == false){
-		$('#pMessage').html('비밀번호를 입력하세요');
+		$('#pMessage').html('비밀번호가 올바르지 않습니다');
 	}
 	if(nCheck == false){
 		$('#nMessage').html('필수정보입니다. 이름을 입력해주세요.');
@@ -73,7 +73,7 @@ function inCheck(){
 	else return false;
 }//incheck
 
-/* 	$('#Checkid').click(function(){
+/* 	$('#checkid').click(function(){
 var idx =false;
 $.ajax({
 	type:"Get",
@@ -101,7 +101,7 @@ $.ajax({
 }); */
 
 //** ID 중복 확인하기
-function idDupCheck() {
+ function idDupCheck() {
 	if (iCheck==false) {
 		iCheck=idCheck();
 	}else {
@@ -112,7 +112,7 @@ function idDupCheck() {
 		window.open(url,"_blank",
 			"toolbar=no,menubar=yes,scrollbars=yes,resizable=yes,width=500,height=400");
 	}
-} //idDupCheck
+} //idDupCheck 
 
 //비밀번호 확인
 $(function(){
@@ -229,8 +229,6 @@ $(function(){
   		</tr>
  	</table>
  	</form>
-<c:if test="${message != null}">
-	<br>${message}<br><br>	
-</c:if>
+ 	<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
 </body>
 </html>

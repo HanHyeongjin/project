@@ -6,21 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>내정보 수정</title>
-<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
-<script src="resources/myLib/jquery-3.2.1.min.js"></script>
-<script src="resources/myLib/inCheck.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/myLib/memberStyle.css">
+	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
+	<script src="resources/myLib/inCheck.js"></script>
 <style>
 table{
-	border:1px solid #444444;
 	border-collapse: collapse;
 	text-align: center;
 	font-size: 30px;
 	
 }
-
-td {
-    border: 1px solid #444444;
-  }
 
 tr{
  width: 100px;
@@ -40,6 +35,15 @@ font-size:30px;
 widows: 70px;
 height: 30px;
 }
+
+ #checkid2{
+ 	border-radius: 10px;
+ 	cursor: pointer;
+ 	background-color: black;
+ 	color: orange;
+ 	text-align: center;
+ 	font-size: 1.0em;
+ }
 </style>
 </head>
 <body>
@@ -58,9 +62,9 @@ height: 30px;
 		<td>
 			<input type="text" name="id" size="20" class="upbox" value="${Apple.id}" readonly>
 		</td>
-		<!-- ** input Tag 입력 막기 
-				=> disabled :  서버로 전송 안됨 
-				=> readonly :  서버로 전송 됨   -->
+		<td>
+  	 		<input type="button" style="width: 150px; height: 80px" value="id중복확인" id="checkid2" onclick="idDupCheck()">
+  	 	</td>	
 	</tr>
 	<tr>
 		<td bgcolor="Gainsboro">비밀번호</td>

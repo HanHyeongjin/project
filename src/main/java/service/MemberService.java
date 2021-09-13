@@ -13,5 +13,9 @@ public interface MemberService {
 	int insert(MemberVO vo);
 	int update(MemberVO vo);
 	int delete(MemberVO vo);
+	int findid(MemberVO vo);
+	int findpassword(MemberVO vo);
+	
+	int updatepassword(MemberVO vo);
 
 }

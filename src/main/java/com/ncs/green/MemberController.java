@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import service.MemberService;
+import service.MemberServiceImpl;
 import vo.MemberVO;
 
 @Controller
@@ -109,15 +110,42 @@ public class MemberController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/findpassword")
-	public ModelAndView findpassword(ModelAndView mv) {
+	@RequestMapping(value = "/findpasswordf")
+	public ModelAndView findpasswordf(ModelAndView mv) {
 		mv.setViewName("member/findpassword");
 		return mv;
 	}
 	
+	@RequestMapping(value = "/findpassword")
+	public ModelAndView findpassword(ModelAndView mv, MemberVO vo) {
+		vo =service.selectOne(vo);
+		
+		if(vo == null) {
+			mv.addObject("loginID", "F");
+		}else {
+			mv.addObject("loginID", "T");
+			mv.addObject("updateid", vo.getId());
+		}
+		mv.setViewName("member/findpassword");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/findidf")
+	public ModelAndView findidf(ModelAndView mv) {
+		mv.setViewName("member/findid");
+		return mv;
+	}
 	
 	@RequestMapping(value = "/findid")
-	public ModelAndView findid(ModelAndView mv) {
+	public ModelAndView findid(ModelAndView mv, MemberVO vo) {
+		vo = service.selectOne(vo);
+		
+		if(vo == null) {
+			mv.addObject("loginID", "F");
+		}else {
+			mv.addObject("loginID", "T");
+			mv.addObject("id", vo.getId());
+		}
 		mv.setViewName("member/findid");
 		return mv;
 	}
@@ -131,7 +159,6 @@ public class MemberController {
 	@RequestMapping(value = "/login")
 	public ModelAndView login(HttpServletRequest request, ModelAndView mv, MemberVO vo) {
 		String password =vo.getPassword();
-		System.out.println("vo"+vo);
 		vo = service.selectOne(vo);
 		
 		 HttpSession session = request.getSession();
@@ -177,7 +204,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "/join")
 	public ModelAndView join(ModelAndView mv, MemberVO vo, HttpServletRequest request) throws IOException{
-		System.out.println("***vo"+vo);
 		if(service.insert(vo) > 0) {
 			//성공
 		   mv.setViewName("member/loginForm");
