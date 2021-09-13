@@ -12,14 +12,14 @@
 <script>
 var iCheck=false;
 var pCheck=false;
-var p2Check=false;
 var nCheck=false;
 var niCheck=false;
 var tCheck=false;
 var eCheck=false; 
 
 $(function(){
-	$('#id').focus();
+	
+$('#id').focus();
 	
 	$('#id').focusout(function(){
 		iCheck=idCheck();
@@ -27,62 +27,94 @@ $(function(){
 	})//id_focusout 
 	
 	$('#password1').focusout(function() {
-		pCheck=pwCheck;
+		pCheck=pwCheck();
 	
 	});
-		
 	$('#name').focusout(function() {
-		nCheck=naCheck;
+		nCheck=naCheck();
 			
-	}); //name_focuseout	
-		
+	}); //name_focuseout
 	$('#nickname').focusout(function() {
-			niCheck=nickCheck;
-			
-	});//birthd_focusout
- 	$('#tel').focusout(function() {
-			tCheck=telCheck;
-			
-	});//point_focusout
+		niCheck=nickCheck();
 		
+	});//nick_focusout
+	$('#tel').focusout(function() {
+		tCheck=telCheck();
+		
+	});//tel_focusout
+	
 	$('#email').focusout(function() {
-			eCheck=emCheck;
-			
-	});//weight_focusout
-		 
-
-}); //ready
+		eCheck=emCheck();
+		
+	});//email_focusout
+	
+});
 
 function inCheck(){
-		if(iCheck == false){
-			$('#iMessage').html('ID를 입력하세요');
-		}
-		if(pCheck == false){
-			$('#pMessage').html('PassWord를 입력하세요');
-		}
-		if(nCheck == false){
-			$('#nMessage').html('Name를 입력하세요');
-		}
-		if(niCheck == false){
-			$('#niMessage').html('닉네임을 입력하세요');
-		}
-		
-	if(tCheck == false){
-			$('#tMessage').html('전화번호를 입력하세요');
-		}
-		if(eCheck == false){
-			$('#eMessage').html('이메일 주소를 입력하세요');
-		} 
-		
-		if(iCheck && pCheck && nCheck && niCheck  ){
-			/* tCheck && eCheck */
-			//오류 확인 완료 => submit 실행
-		// alert('~~ 입력 완료 , 회원 가입 됩니다. ~~'+${'#id'}.val());
-			alert('~~ 입력 완료 , 회원 가입 됩니다. ~~'+$('#id').val());
-			return true;
-		}else return false;
-}//NOT
+	if(iCheck == false){
+		$('#iMessage').html('아이디를 입력하세요');
+	}
+	if(pCheck == false){
+		$('#pMessage').html('비밀번호를 입력하세요');
+	}
+	if(nCheck == false){
+		$('#nMessage').html('필수정보입니다. 이름을 입력해주세요.');
+	}
+	if(niCheck == false){
+		$('#niMessage').html('필수정보입니다. 닉네임을 입력해주세요.');
+	}
+ 	if(tCheck == false){
+		$('#tMessage').html('필수정보입니다. 번호를 입력해주세요.');
+	}
+	if(eCheck == false){
+		$('#eMessage').html('필수정보입니다. 이메일 주소를 입력해주세요.');
+	}  
+	if(iCheck && pCheck) return true;
+	else return false;
+}//incheck
 
+/* 	$('#Checkid').click(function(){
+var idx =false;
+$.ajax({
+	type:"Get",
+	url:"join",
+	data:{
+		"id":$('#id').val()
+	},
+	success:function(data){
+	
+		if(data==0 && $.trim($('#id').val())!= ''){
+			idx=true;
+			$('#id').attr('readonly',true);
+			
+			alert("사용가능한 아이디");
+
+		}else{
+			alert("사용불가능");
+		}
+ 	},
+	error:function(){
+		alert("서버에러");
+	}
+
+	});
+}); */
+
+//** ID 중복 확인하기
+function idDupCheck() {
+	if (iCheck==false) {
+		iCheck=idCheck();
+	}else {
+		// => 서버로 입력값을 보내어 중복확인 , 결과 처리
+		// => window.open('','','')
+		//    url 요청을 서버로 전달(request) 하고, 그결과(response)를 Open 해줌
+		var url="idCheck?id="+$('#id').val();
+		window.open(url,"_blank",
+			"toolbar=no,menubar=yes,scrollbars=yes,resizable=yes,width=500,height=400");
+	}
+} //idDupCheck
+
+//비밀번호 확인
 $(function(){
 	$('#alert-success').hide();
 	$('#alert-fail').hide();
@@ -116,46 +148,87 @@ $(function(){
 			 회원 가입
 		</div>
 	</div>
-<form action="join" method="Post">	
-	<table class="jointable"  align="center">
-
-  <tr><td class="blind">아이디</td>
-  <tr><td><input type="text" name="id" id="id" placeholder="아이디를 입력하세요" title="아이디"><br>
-  <span id="iMessage" class="eMessage"></span></td></tr>
-  
-  <tr><td class="blind">비밀번호</td></tr>
-  <tr><td><input type="password" name="password" id="password1" autocomplete="off" placeholder="비밀번호를 입력하세요" title="비밀번호">
-  
-  <span id="p2Message" class="eMessage"></span></td></tr>
-  <tr><td class="blind">비밀번호 확인</td></tr>
-  <tr><td><input type="password" id="password2" autocomplete="off" placeholder="비밀번호를 한번더 입력하세요" title="비밀번호">
-  <div class="alert-success" id="alert-success">비밀번호가 일치합니다</div>
-  <div class="alert-fail" id="alert-fail">비밀번호가 일치하지 않습니다</div>
-  <span id="pMessage" class="eMessage"></span></td></tr>
-  
-  <tr><td class="blind">이름</td></tr>
-  <tr><td><input type="text" name="name" id="name" autocomplete="off" placeholder="이름을 입력하세요" >
-  <span id="nMessage" class="eMessage"></span></td></tr>
-  
-  <tr><td class="blind">닉네임</td></tr>
-  <tr><td><input type="text" name="nickname" id="nickname" placeholder=""> 
-  <span id="niMessage" class="eMessage"></span></td></tr>  
-  
-   <tr><td class="blind">전화번호</td></tr>
-  <tr><td><input type="tel" name="tel" id="tel" placeholder="-없이 입력해주세요"> 
-  <span id="tMessage" class="eMessage"></span></td></tr>  
-  
-  <tr><td class="blind">이메일 주소</td></tr><tr>
-  <tr><td><input type="email" name="email" id="email" placeholder="" > 
-  <span id="eMessage" class="eMessage"></span></td></tr>   
-  
-  <tr>
-    <td align="right" style="margin-right: 0;">
-      <input type="submit" name="signup_submit" id="signup-submit" value="회원가입하기" onclick="return inCheck()">
-    </td>
-   </tr>
- </table>
-</form>
+	<form action="join" method="Post" class="container">	
+	<table align="center" >
+		<tr>
+      		<td class="blind">아이디</td>
+  		</tr>
+  		<tr>
+    		<td>
+     			<input type="text" name="id" id="id" placeholder="아이디를 입력하세요" ><br>
+     			<span id="iMessage" class="eMessage" ></span>&nbsp;&nbsp;
+    		</td>
+    		<td>
+  	 			<input type="button" style="width: 120px; height: 80px" value="id중복확인" id="checkid" onclick="idDupCheck()">
+  			</td>
+  		</tr>
+  		<tr>
+  			<td class="blind" style="margin-bottom: 20px">비밀번호</td>
+  		</tr>
+ 		<tr>
+ 			<td>
+ 				<input type="password" name="password" id="password1" autocomplete="off" placeholder="비밀번호를 입력하세요" title="비밀번호" style="margin-bottom: 10px"><br>
+ 		  		<span id="pMessage" class="eMessage" style="margin-bottom: 20px"></span>
+  			</td>
+  		</tr>  
+  		<tr>
+  			<td class="blind">비밀번호 확인</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				<input type="password" id="password2" autocomplete="off" placeholder="비밀번호를 한번더 입력하세요" title="비밀번호" style="margin-bottom: 5px"><br>
+  				<div class="alert-success" id="alert-success">비밀번호가 일치합니다</div>
+  				<div class="alert-fail" id="alert-fail">비밀번호가 일치하지 않습니다</div>
+  		 		<span id="pMessage" class="eMessage"></span>
+  		 	</td>
+  		</tr>
+ 
+		<tr>
+			<td class="blind">이름</td>
+		</tr>
+  		<tr>
+  			<td>
+  				<input type="text" name="name" id="name" placeholder="이름을 입력하세요" style="margin-bottom: 5px"><br>
+  		  		<span id="nMessage" class="eMessage" style="margin-bottom: 20px"></span>
+  		  	</td>
+  		</tr>
+  		<tr>
+  			<td class="blind">닉네임</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				<input type="text" name="nickname" id="nickname" placeholder="닉네임을 입력하세요" style="margin-bottom: 5px"><br>
+  	      		<span id="niMessage" class="eMessage" style="margin-bottom: 20px"></span>
+  	      	</td>
+  	    </tr>  
+  	      
+  		<tr>
+  			<td class="blind">핸드폰 번호</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				<input type="tel" name="tel" id="tel" placeholder="-없이 입력해주세요" style="margin-bottom: 5px"><br>
+  			 	<span id="tMessage" class="eMessage" style="margin-bottom: 5px"></span>
+  			</td>
+  		</tr>  
+  		  
+ 	 	<tr>
+ 	 		<td class="blind">이메일 주소</td>
+ 	 	</tr>
+  		<tr>
+  		 	<td>
+     			<input type="email" name="email" id="email" placeholder="이메일을 입력하세요" style="margin-bottom: 5px"><br>
+  		  		<span id="eMessage" class="eMessage" style="margin-bottom: 20px"></span>
+  		  	</td>
+  		</tr>  
+  		  
+  		<tr>
+   			<td>
+    			<input type="submit" style="margin-top: 20px" name="signup_submit" class="button_login" value="회원가입하기" onclick="return inCheck()" disabled id="submit">
+   			</td>
+  		</tr>
+ 	</table>
+ 	</form>
 <c:if test="${message != null}">
 	<br>${message}<br><br>	
 </c:if>

@@ -27,6 +27,15 @@ public class MemberServiceImpl implements MemberService{
 	public int insert(MemberVO vo) {
 		return dao.insert(vo);
 	}
+	@Override
+	public int delete(MemberVO vo) {
+		return dao.delete(vo);
+	}
+	
+	@Override
+	public int update(MemberVO vo) {
+		return dao.update(vo);
+	}
 	
 
 }

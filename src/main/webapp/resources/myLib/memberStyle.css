@@ -1,4 +1,4 @@
- .container{
+  .container{
 	margin-top: 30px;	
 }
  
@@ -18,46 +18,68 @@
     background-color: rgba( 255, 255, 255, 0.5 );
 } 
 
+.button_login{
+ 	border-radius: 10px;
+ 	cursor: pointer;
+ 	width: 500px;
+ 	height: 70px;
+ 	background-color: black;
+ 	color: orange;
+ 	text-align: center;
+ 	font-size: 1.3em;
+ } 
+ 
+ .login{
+ 	border-radius: 10px;
+ 	cursor: pointer;
+ 	width: 500px;
+ 	height: 70px;
+ 	background-color: black;
+ 	color: orange;
+ 	text-align: center;
+ 	font-size: 1.3em;
+ } 
+
 .jointable{
-	width: 25%;
+	width: 100%;
 }
 .blind{
 	font-size: 1.3em;
 	font-weight: bold;
 }
- #id {
- width: 99%;
+  #id {
+ width: 500px;
  height: 50px;
  }
  
  #password1 {
- width: 99%;
+ width: 500px;
  height: 50px;
  }
  #password2 {
- width: 99%;
+ width: 500px;
  height: 50px;
  }
  
  #nickname {
- width: 99%;
+ width: 500px;
  height: 50px;
  }
  
  #tel {
- width: 99%;
+ width: 500px;
  height: 50px;
  }
  
  #email {
- width: 99%;
+ width: 500px;
  height: 50px;
  }
  
  #name {
- width: 99%;
+ width: 500px;
  height: 50px;
- }
+ } 
  
  #alert-success{
  	color:green;
@@ -70,6 +92,17 @@
  	font-style: italic;
 	font-size: x-small;
  }
+ 
+ #checkid{
+ 	border-radius: 10px;
+ 	cursor: pointer;
+ 	width: 100px;
+ 	height: 70px;
+ 	background-color: black;
+ 	color: orange;
+ 	text-align: center;
+ 	font-size: 1.3em;
+ }
 
 a:hover {
 	color: Dimgray; font-size: 1.0em;
@@ -79,4 +112,4 @@ a:hover {
 	color: red;
 	font-style: italic;
 	font-size: x-small;
-}
+} 
