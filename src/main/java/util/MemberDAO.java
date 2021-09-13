@@ -16,14 +16,14 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	private static final String NS = "green.ncs.mapper.MemberMapper";
+	private static final String NS = "green.mapper.MemberMapper.";
 	
 	public List<MemberVO> selectList(){
 		return sqlsession.selectList(NS+"selectList");
 	}
 	
-	public MemberVO selectOne(){
-		return sqlsession.selectOne(NS+"selectOne");
+	public MemberVO selectOne(MemberVO vo){
+		return sqlsession.selectOne(NS+"selectOne",vo);
 	}
 	
 	public int insert(MemberVO vo) {

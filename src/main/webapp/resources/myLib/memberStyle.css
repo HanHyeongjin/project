@@ -9,6 +9,15 @@
     width: 550px;
     background-color: rgba( 255, 255, 255, 0.5 );
 } 
+
+ .signup-submit{
+	margin: 0px 10px 8px 10px;
+    padding: 10px;
+    border: solid 1px #dadada;
+    width: 550px;
+    background-color: rgba( 255, 255, 255, 0.5 );
+} 
+
 .jointable{
 	width: 25%;
 }
@@ -30,6 +39,16 @@
  height: 50px;
  }
  
+ #nickname {
+ width: 99%;
+ height: 50px;
+ }
+ 
+ #tel {
+ width: 99%;
+ height: 50px;
+ }
+ 
  #email {
  width: 99%;
  height: 50px;
@@ -39,7 +58,25 @@
  width: 99%;
  height: 50px;
  }
+ 
+ #alert-success{
+ 	color:green;
+ 	font-style: italic;
+	font-size: x-small;
+ }
+ 
+ #alert-fail{
+ 	color:red;
+ 	font-style: italic;
+	font-size: x-small;
+ }
 
 a:hover {
 	color: Dimgray; font-size: 1.0em;
+}
+
+.eMessage{
+	color: red;
+	font-style: italic;
+	font-size: x-small;
 }

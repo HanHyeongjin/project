@@ -5,10 +5,24 @@
  <mapper namespace="green.mapper.MemberMapper">
 
 
+ 
+ 	<select id="selectOne" resultType="vo.MemberVO">
+ 		select * from pmember where id = #{id}
+ 	</select>
+
  	
  	<insert id="insert">
- 		insert into member values(
- 		#{id}, #{password}, #{name},#{lev},#{email});
- 	</insert>
- 	 
+ 		insert into pmember values(
+ 		#{id},#{password},#{name},#{nickname}, #{tel}, #{email})
+ 			</insert>
+
+ 	
+ 	<update id="update">
+ 		update member set password = #{password}, name=#{name},lev=#{lev} , email = #{email} where id= #{id}
+ 	</update>
+ 	
+ 	<delete id="delete">
+ 		delete from member where id=#{id}" 
+ 	</delete>
+
  </mapper>
