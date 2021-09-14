@@ -3,8 +3,7 @@
 <html>
 <head>
    <title>Main</title>   
-   <script src="resources/myLib/jquery-3.2.1.min.js"></script>   
-   <link rel="stylesheet" type="text/css" href="resources/myLib/footerStyle.css">
+   <script src="resources/myLib/jquery-3.2.1.min.js"></script> 
 </head>
 <body>   
    

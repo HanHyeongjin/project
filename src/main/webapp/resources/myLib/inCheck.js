@@ -16,7 +16,7 @@ function idCheck(){
 function pwCheck(){
 	var password=$('#password1').val();
 		
-	if(password.length < 4){
+	if(password.length < 3){
 		$('#pMessage').html("password는 4글자 이상 입니다");
 		return false;
 			
@@ -51,7 +51,9 @@ function naCheck(){
 
 function nickCheck(){
 	var nickname=$('#nickname').val();
-	if(nickname.replace(/[가-힣.a-z.0-9]/gi,'').length > 0){
+	var regn = /[가-힣.a-z.0-9]/gi;
+	
+	if(regn.test(nickname) == false){
 		$('#niMessage').html('닉네임은 한글, 영어, 숫자로 입력하세요');
 		return false;
 		
@@ -62,32 +64,26 @@ function nickCheck(){
 	}		
 }//niCheck
 
-function tCheck(){
+function telCheck(){
 	var tel=$('#tel').val();
+	var reg = /^[0-9]+/g;
 
-	if($.isNumeric(tel)==false){
-		$('#tMessage').html("전화번호를 입력하세요");
-		return false;
-	}else if(point.replace(/[.]/g,'').length < point.length){
-		$('#tMessage').html("point는 정수로만 입력하세요");
+	if(reg.test(tel)==false){
+		$('#tMessage').html("숫자만 입력하세요");
 		return false;
 	}else{
 		$('#tMessage').html('');
 		return true;
 	}	
-}//poCheck
+}
 
-function eCheck(){
+function emCheck(){
 	var email=$('#email').val();
+	var reg2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 				
-	if($.isNumeric(email)==false){
-		$('#eMessage').html("weight는 숫자로만 입력하세요");
+	if(reg2.test(email) == false){
+		$('#eMessage').html("이메일을 입력해주세요");
 		return false;
-	}else if(parseFloat(email) <20 || parseFloat(weight) >200){
-			//else if(Number(weight) <20 || Number(weight) >200){
-			// Number(weight)
-			$('#eMessage').html("weight 값이 범위를 벗어납니다");
-			return false
 	}else{
 		$('#eMessage').html('');
 		return true;

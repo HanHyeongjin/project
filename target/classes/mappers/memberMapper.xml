@@ -18,11 +18,24 @@
 
  	
  	<update id="update">
- 		update member set password = #{password}, name=#{name},lev=#{lev} , email = #{email} where id= #{id}
+ 		update pmember set password = #{password}, name=#{name},lev=#{lev} , email = #{email} where id= #{id}
  	</update>
  	
  	<delete id="delete">
- 		delete from member where id=#{id}" 
+ 		delete from pmember where id=#{id}" 
  	</delete>
 
+ 	
+ 	<select id="findid">
+ 		select * from pmember where name= #{name} and tel=#{tel}
+ 	</select>
+ 	
+ 	<select id="findpassword">
+ 		select * from pmember where id = #{id} and email=#{email}
+ 	</select>
+ 	
+ 	<update id="updatepassword">
+ 		update pmember set password=#{password} where id=#{id}
+ 	</update>
+ 
  </mapper>

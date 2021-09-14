@@ -29,6 +29,26 @@ public class MemberDAO {
 	public int insert(MemberVO vo) {
 		return sqlsession.insert(NS+"insert",vo);
 	}
+	
+	public int update(MemberVO vo) {
+		return sqlsession.update(NS+"update",vo);
+	}
+	
+	public int delete(MemberVO vo) {
+		return sqlsession.delete(NS+"delete",vo);
+	}
+	
+	public int findid(MemberVO vo) {
+		return sqlsession.selectOne(NS+"findid",vo);
+	}
+	
+	public int findpassword(MemberVO vo) {
+		return sqlsession.selectOne(NS+"findpassword",vo);
+	}
+	
+	public int updatepassword(MemberVO vo) {
+		return sqlsession.update(NS+"updatepassword",vo);
+	}
 
 
 }

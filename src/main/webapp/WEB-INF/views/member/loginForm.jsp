@@ -4,12 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>로그인</title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/memberStyle.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 	<script src="resources/myLib/inCheck.js"></script>
-</head>
-<head>
 <script>
 var iCheck=false;
 var pCheck=false;
@@ -24,18 +23,17 @@ $('#id').focus();
 	})//id_focusout 
 	
 	$('#password1').focusout(function() {
-		pCheck=pwCheck;
+		pCheck=pwCheck();
 	
 	});
 });
 
 function inCheck(){
 	if(iCheck == false){
-		$('#iMessage').html('ID를 입력하세요');
-		
+		$('#iMessage').html('아이디를 입력하세요');
 	}
 	if(pCheck == false){
-		$('#pMessage').html('PassWord를 입력하세요');
+		$('#pMessage').html('비밀번호가 올바르지 않습니다');
 	}
 	if(iCheck && pCheck) return true;
 	else return false;
@@ -53,30 +51,38 @@ function inCheck(){
 			 로그인
 		</div>
 	</div>
-
-	 <div align="center" class="container">
-		<form action="login" method="get" class="login-id-box">
-		  <table>
-			<tr><td class="login-id-box"><input type="text" name="id" id="id" placeholder="아이디" title="아이디"><br>
-			<span id="iMessage" class="eMessage"></span></td>
-			</tr>
-			<tr><td class="login-id-box"><input type="password" name="password" id="password1" placeholder="비밀번호"><br>
-			<span id="pMessage" class="eMessage"></span></td>
-			</tr>
-			<tr><td class="login-id-box"><input type="submit"  class="button_login"  value="로그인" onclick="return inCheck()">&nbsp;</td>
-			</tr>
-			<tr>
-				<td>
-					<a href="home">아이디 찾기</a>&nbsp;<span class="bar">&nbsp;&nbsp;|</span>
-					<a href="home">비밀번호 찾기</a>&nbsp;<span class="bar">&nbsp;|&nbsp;</span>
-					<a href="joinf">회원가입</a>&nbsp;
-				</td>
-			</tr>		
-		</table></form>	
-	 </div> 
-		<c:if test="${message != null}">
-			<br>${message}<br><br>	
-		</c:if>
-
+	<div align="center" class="container">
+	<form action="login" method="get" class="login-id-box">
+			<table >
+				<tr>
+					<td class="login-id-box" align="center">
+						<input type="text" name="id" id="id" placeholder="아이디" title="아이디">
+					<br>
+						<span id="iMessage" class="eMessage"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="login-id-box" align="center">
+						<input type="password" name="password" id="password1" placeholder="비밀번호">
+					<br>
+						<span id="pMessage" class="eMessage"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="login-id-box" align="center">
+						<input type="submit" class="login" value="로그인" onclick="return inCheck()">&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="findidf"><b>아이디 찾기</b></a>&nbsp;<span class="bar">&nbsp;&nbsp;|</span>
+						<a href="findpasswordf"><b>비밀번호 찾기</b></a>&nbsp;<span class="bar">&nbsp;|&nbsp;</span>
+						<a href="joinf"><b>회원가입</b></a>&nbsp;
+					</td>
+				</tr>		
+			</table>
+			</form>
+		</div>	
+		<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
 </body>
 </html>
