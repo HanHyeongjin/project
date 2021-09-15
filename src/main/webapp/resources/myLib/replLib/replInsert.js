@@ -37,7 +37,7 @@ var replCheck=false;
 		url:"replinsert",
 		dataType : 'json',
 		data:{
-			idno : $('#gidno').val(),
+			
 			rvno : $('#replrvno').val(),
 			rpcontents:$('#repl').val()
 		},

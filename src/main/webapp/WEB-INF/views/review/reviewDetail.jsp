@@ -48,7 +48,6 @@ $(function () {
 		<div class="hrdiv">댓글</div>
 		<div>
 			<form>
-				<input type="hidden" id="idno" name="gidno" value="${game.idno}">
 				<input type="hidden" id="replrvno" value="${review.rvno}"
 					name="rvno">
 				<textarea id="repl" class="repl" name="rpcontents"
