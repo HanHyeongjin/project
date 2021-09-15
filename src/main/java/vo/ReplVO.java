@@ -12,5 +12,5 @@ public class ReplVO {
 	private int root;
 	private int step;
 	private String rpredate;
-
+	private String nickname;
 } //class

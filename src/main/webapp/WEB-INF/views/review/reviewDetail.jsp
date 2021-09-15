@@ -58,6 +58,7 @@ $(function () {
 			${rpmessage}
 			</c:if>
 			<c:forEach var="relist" items="${repls}">
+			<>
 			<div>${relist.rpcontents}</div>
 			</c:forEach>
 		</div>
