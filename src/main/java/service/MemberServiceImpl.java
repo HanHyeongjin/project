@@ -13,6 +13,8 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	MemberDAO dao;
 	
+	
+	
 	@Override
 	public List<MemberVO> selectList() {
 		return dao.selectList();

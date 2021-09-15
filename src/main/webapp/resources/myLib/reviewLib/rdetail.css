@@ -53,64 +53,7 @@
 	margin: 3% 0 3% 0;
 }
 
-.repl {
-	font-size: 1.2em;
-	height: 60px;
-	width: 70%;
-	text-decoration: none;
-	border-color: rgba(0, 0, 0, 0.15);
-	border-bottom-width: 1;
-	border-top-width: 0;
-	border-left-width: 0;
-	border-right-width: 0;
-	margin-bottom: 0;
-}
 
-input:focus {
-	outline: none;
-}
-
-.replhr {
-	width: 70%;
-	display: flex;
-	flex-basis: 100%;
-	align-items: center;
-	color: rgba(0, 0, 0, 0.25);
-	font-size: 2em;
-}
-
-.replhr::before {
-	content: "";
-	flex-grow: 1;
-	background: rgba(0, 0, 0, 0.15);
-	height: 1px;
-	font-size: 0px;
-	line-height: 0px;
-}
-
-.replbtndiv {
-	visibility: hidden;
-	width: 70%;
-	text-align: right;
-}
-
-.replsubtn {
-	border-radius: 15%;
-	font-weight: bold;
-	margin: 0 0 0 0;
-	border: none;
-	background: rgba(0, 0, 0, 0.15);
-	width: 80px;
-	height: 40px;
-}
-.replrsbtn {
-	font-weight: bold;
-	margin: 3px 0 0 0;
-	border: none;
-	background: white;
-	width: 80px;
-	height: 40px;
-}
 
 .star{
 	color: red;

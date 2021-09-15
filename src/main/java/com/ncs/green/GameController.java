@@ -27,6 +27,8 @@ public class GameController {
 	ReviewService rservice;
 
 
+	
+
 	//게임 정보 출력
 	@RequestMapping(value = "/gameinfo")
 	public ModelAndView gameinfo(HttpServletRequest request, ModelAndView mv, 

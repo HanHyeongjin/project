@@ -11,7 +11,7 @@
 		  from review r where rvno = ${rvno}
 	</select>
 	<!-- 리뷰작성 -->
-	<insert id="insert">
+	<insert id="reviewInsert">
 		<selectKey keyProperty="rvno" resultType="int" order="BEFORE">
 			select nvl(max(rvno),0)+1 from review
 		</selectKey>

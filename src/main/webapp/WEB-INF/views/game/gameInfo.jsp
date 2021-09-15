@@ -6,8 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Game INFO</title>
+<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script>
-$('.repl').focusin(function() {
+$('.repl').focus(function() {
 	$(this).css({
 		borderBottom: "green"
 	});

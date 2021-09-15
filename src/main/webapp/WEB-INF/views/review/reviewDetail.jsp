@@ -1,75 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰 상세</title>
+<title>리뷰 상세 및 댓글 작성</title>
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
-<script src="resources/myLib/reviewLib/reviewRelp.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="resources/myLib/reviewLib/rdetail.css">
-<script>
-var reCheck=false;
-	$(function () {		
-		$('.repl').focus(function() {
-			$('.repl').css({
-				borderColor: "black"
-			});
-			$('.replbtndiv').css({
-				visibility: "visible"
-			});
-		});//focus
-		
-		$('.repl').focusout(function() {
-			$('.repl').css({
-				borderColor: "rgba(0, 0, 0, 0.15)"
-			});
-		});//focusout
-		$('#repl').keyup(function() {
-			reCheck = rCheck();
-			if(reCheck == true){
-				$('.replsubtn').prop("disabled",false).css({
-					background :"OrangeRed",
-					color:"white"
-				});
-			}else if(reCheck == false){
-				$('.replsubtn').prop("disabled",true).css({
-					background :"rgba(0, 0, 0, 0.15)",
-					color:"black"
-			});
-		}
-	});//repl.keyup
-	
-	if(${review.score} == 1){
-		$('#s1').addClass("star");
-	}else if(${review.score} == 2){
-		$('#s1').addClass("star");
-		$('#s2').addClass("star");
-	}else if(${review.score} == 3){
-		$('#s1').addClass("star");
-		$('#s2').addClass("star");
-		$('#s3').addClass("star");
-	}else if(${review.score} == 4){
-		$('#s1').addClass("star");
-		$('#s2').addClass("star");
-		$('#s3').addClass("star");
-		$('#s4').addClass("star");
-	}else if(${review.score} == 5){
-		$('.s').addClass("star");
-	}
-});//ready
-function rCheck(){
-	var repl=$('#repl').val().replace(/\s|　/gi, '');		
-	if(repl.length == 0 ){
-		return false;				
-	}
-	else {
-		return true;
-	}
-	
-}//rCheck
+<script src="resources/myLib/replLib/replInsert.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="resources/myLib/replLib/replinsert.css">
 
+<script>
+$(function () {
+	for(var i = 0; i<=${review.score}; i++){
+		$('.stars > span:nth-child('+i+')').addClass("star");
+	}
+});
 	</script>
 </head>
 <body>
@@ -94,19 +43,26 @@ function rCheck(){
 			</div>
 		</div>
 		<div class="hrdiv"></div>
+
 		<div class="contents">${review.rcontents}</div>
 		<div class="hrdiv">댓글</div>
 		<div>
 			<form>
-				<input id="repl" class="repl" type="text"
-					placeholder="댓글 작성하기......">
+				<input type="hidden" id="idno" name="gidno" value="${game.idno}">
+				<input type="hidden" id="replrvno" value="${review.rvno}"
+					name="rvno">
+				<textarea id="repl" class="repl" name="rpcontents"
+					placeholder="댓글 작성하기......" cols="100" rows="5"></textarea>
 				<div class="replbtndiv">
 					<input type="reset" value="취소" class="replrsbtn"> <input
-						type="submit" value="작성" class="replsubtn" disabled>
+						type="submit" id="replsumit" value="작성" class="replsubtn" disabled>
 				</div>
-				<!-- <div class=""></div> -->
 			</form>
-
+			<c:if test="${rpmessage != null}">
+			${rpmessage}
+			</c:if>
+			
+			<jsp:include page="/WEB-INF/views/repl/replList.jsp" flush="true" />
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
