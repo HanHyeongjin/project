@@ -4,6 +4,11 @@
 <mapper namespace="green.mapper.GameMapper">
 
 
+
+<update id="gameGradePlus">
+	update game set grade = grade+#{score} where game.idno = #{idno}
+</update>
+
  <select id="gameInfo" resultType="vo.GameVO">
  	select * from game where idno=#{idno}
  </select>

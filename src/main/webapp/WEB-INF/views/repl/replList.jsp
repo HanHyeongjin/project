@@ -18,33 +18,34 @@
 <c:if test="${message != null}">
 	${message}
 </c:if>
-	<div id="iddiv">
-	
+	<div id="iddiv">	
 	
 	<c:forEach var="relist" items="${repls}">
-	
-		<div id="pl${relist.replno}">
+			<div class="repldiv">
+			<div style="display: flex;">
+			<div class="userimg"><img src="resources/image/user.png" width="50" height="50"></div>
+			<div>
 			<div class="repldiv2">${relist.nickname}</div>
 			<div class="repldiv2">${relist.rpcontents}</div>
+			</div>
+			</div>
 			<div class="rpbott repldiv2">
 				<span class="rpbtn"><img src="resources/image/likeoff.png"
 					width="15px" height="15px"></span> <span class="rpbtn"><img
 					src="resources/image/dislikeoff.png" width="15px" height="15px"></span>
 				<span class="rpbtn" id="rrpl${relist.replno}">답글 작성</span>
 					
-			
-				<div id="viewrrpl${relist.replno}" class="viewrrpl">답글 보기</div>
 				
 				<div id="insertrrpl${relist.replno}" class="insertrrpl">
 				<form>
 					<input type="hidden" id="rootrepl${relist.replno}"
-						value="${relist.replno}" name="root" >
+						value="${relist.root}" >
 					<input type="hidden" id="noviewrrpl${relist.replno}"
 						value="${relist.root}">
 						<input type="hidden" id="steprepl${relist.replno}"
 						value="1" name="step" >
 					 <input type="hidden"
-						id="rvnorepl${relist.replno}" value="${review.rvno}" name="rvno">
+						id="rvnorepl${relist.replno}" value="${relist.rvno}">
 					<textarea id="repl${relist.replno}" class="rrepl" name="rpcontents"
 						placeholder="답글 작성하기......" cols="100" rows="5"></textarea>
 					<div class="rreplbtndiv" id="btnrepl${relist.replno}">
@@ -54,14 +55,14 @@
 					</div>
 					</form>
 				</div>
-				<div class="rreplresult" id="divviewrrpl${relist.replno}">	
-							
-				</div>
-				<div>
-				
+				<c:if test="${relist.rreplcount != 0}">
+				<div id="viewrrpl${relist.replno}" class="viewrrpl">▼ 답글 보기</div>
+				</c:if>
+				<div class="resultrepl${relist.replno}" id="divviewrrpl${relist.replno}"></div>
+				<div>				
 				</div>
 			</div>
-		</div>
+			</div>
 	</c:forEach>
 	</div>
 </body>

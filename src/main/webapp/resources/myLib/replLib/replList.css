@@ -1,5 +1,6 @@
 .repldiv{
 	margin-top: 15px;
+	margin-bottom: 30px;
 }
 
 .repldiv2{
@@ -12,6 +13,7 @@
 .rpbtn{
 	margin-right: 50px;
 	cursor: pointer;
+	
 }
 .insertrrpl{
 	display: none;
@@ -20,4 +22,12 @@
 .rreplresult{
 	margin-left: 50px;
 	/* display: none; */
+}
+.viewrrpl{
+	color: blue;
+	cursor: pointer;
+	margin-top: 15px;
+}
+.userimg{
+	margin-right: 15px;
 }

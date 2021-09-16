@@ -16,8 +16,13 @@
 <body>
 	<c:forEach var="rrelist" items="${rrepls}">
 		<div class="repldiv">
+		<div style="display: flex;">
+		<div class="userimg"><img src="resources/image/user.png" width="40" height="40"></div>
+			<div>
 			<div class="repldiv2">${rrelist.nickname}</div>
 			<div class="repldiv2">${rrelist.rpcontents}</div>
+			</div></div>
+			
 			<div class="rpbott repldiv2">
 				<span class="rpbtn"><img src="resources/image/likeoff.png"
 					width="15px" height="15px"></span> <span class="rpbtn"><img

@@ -7,11 +7,20 @@
 <meta charset="UTF-8">
 <title>Game INFO</title>
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
+<script>
+$('.repl').focus(function() {
+	$(this).css({
+		borderBottom: "green"
+	});
+})
+
+</script>
+<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="resources/myLib/gamelib/detailReview.css">
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/headfoot/gameTopBar.jsp" />
+	<jsp:include page="/WEB-INF/views/headfoot/gameTopBar.jsp" flush="true" />
 	<div class="maininfo">
 		<div class="gameinfo">
 			<table class="infotable">
@@ -68,6 +77,11 @@
 		<div class="rdiv2">
 			<a href="#">더보기</a>
 		</div>
+		 <div>
+		<c:if test="${message != null}">
+		${message}
+		</c:if>
+	</div>
 		<div class="rtable">
 			<c:forEach var="list" items="${reviews}">
 					
@@ -75,7 +89,7 @@
 				<div class="border">
 					<div style="background: white; width: 80%">
 						<div class="rtitle">
-							<a href="#">${list.rtitle}</a>
+							<a href="reviewdetail?idno=${game.idno}&rvno=${list.rvno}">${list.rtitle}</a>
 						</div>
 						<div class="rdiv3">
 							<div class="rdiv4">
@@ -88,7 +102,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="score">${list.score}</div>					
+					<div class="score">${list.score}</div>				
 				</div>
 				<div class="rdiv2"></div>
 			</c:forEach>
