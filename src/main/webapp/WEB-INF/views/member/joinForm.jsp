@@ -16,6 +16,7 @@ var nCheck=false;
 var niCheck=false;
 var tCheck=false;
 var eCheck=false; 
+var checkid=false;
 
 $(function(){
 	
@@ -23,20 +24,30 @@ $('#id').focus();
 	
 	$('#id').focusout(function(){
 		iCheck=idCheck();
-		
+		checkid=dupid();
+		if(checkid ==true ){
+			$('#iMessage').css({
+				color: "green"
+			});
+		}else{
+			$('#iMessage').css({
+				color: "red"
+			});
+		}
 	})//id_focusout 
 	
 	$('#password1').focusout(function() {
 		pCheck=pwCheck();
 	
 	});
+	
 	$('#name').focusout(function() {
 		nCheck=naCheck();
 			
 	}); //name_focuseout
+	
 	$('#nickname').focusout(function() {
 		niCheck=nickCheck();
-		
 	});//nick_focusout
 	$('#tel').focusout(function() {
 		tCheck=telCheck();
@@ -54,6 +65,9 @@ function inCheck(){
 	if(iCheck == false){
 		$('#iMessage').html('아이디를 입력하세요');
 	}
+	if(checkid == false){
+		$('#iMessage').html('사용중인 아이디입니다');
+	}
 	if(pCheck == false){
 		$('#pMessage').html('비밀번호가 올바르지 않습니다');
 	}
@@ -69,50 +83,11 @@ function inCheck(){
 	if(eCheck == false){
 		$('#eMessage').html('필수정보입니다. 이메일 주소를 입력해주세요.');
 	}  
-	if(iCheck && pCheck) return true;
+	if(iCheck && checkid && pCheck && nCheck && niCheck && tCheck && eCheck ) return true;
 	else return false;
 }//incheck
 
-/* 	$('#checkid').click(function(){
-var idx =false;
-$.ajax({
-	type:"Get",
-	url:"join",
-	data:{
-		"id":$('#id').val()
-	},
-	success:function(data){
-	
-		if(data==0 && $.trim($('#id').val())!= ''){
-			idx=true;
-			$('#id').attr('readonly',true);
-			
-			alert("사용가능한 아이디");
 
-		}else{
-			alert("사용불가능");
-		}
- 	},
-	error:function(){
-		alert("서버에러");
-	}
-
-	});
-}); */
-
-//** ID 중복 확인하기
- function idDupCheck() {
-	if (iCheck==false) {
-		iCheck=idCheck();
-	}else {
-		// => 서버로 입력값을 보내어 중복확인 , 결과 처리
-		// => window.open('','','')
-		//    url 요청을 서버로 전달(request) 하고, 그결과(response)를 Open 해줌
-		var url="idCheck?id="+$('#id').val();
-		window.open(url,"_blank",
-			"toolbar=no,menubar=yes,scrollbars=yes,resizable=yes,width=500,height=400");
-	}
-} //idDupCheck 
 
 //비밀번호 확인
 $(function(){
@@ -136,10 +111,30 @@ $(function(){
 	});
 	
 });
+
+//닉네임 확인
+/* $(function(){
+	$('#success-nick').hide();
+	$('$fail-nick').hide();
+	$('input').keyup(function(){
+	
+}); */
 </script>
+<style>
+ #success-nick{
+ 	color:green;
+ 	font-style: italic;
+	font-size: small;
+ }
+ 
+ #fail-nick{
+ 	color:red;
+ 	font-style: italic;
+	font-size: small;
+ }
+</style>
 </head>
 <body>
-
 <div style="position: fixed; z-index: 50"><jsp:include page="/WEB-INF/views/headfoot/header.jsp" flush="true" /></div>
 	<div style="position: relative;">
 		<img src="resources/image/space.jpg" width="100%" height="400px">	
@@ -156,10 +151,10 @@ $(function(){
   		<tr>
     		<td>
      			<input type="text" name="id" id="id" placeholder="아이디를 입력하세요" ><br>
-     			<span id="iMessage" class="eMessage" ></span>&nbsp;&nbsp;
+     			<span id="iMessage"  ></span>&nbsp;&nbsp;
     		</td>
     		<td>
-  	 			<input type="button" style="width: 120px; height: 80px" value="id중복확인" id="checkid" onclick="idDupCheck()">
+  	 			<!-- <input type="button" style="width: 120px; height: 80px" value="id중복확인" id="checkid" onclick="idDupCheck()"> -->
   			</td>
   		</tr>
   		<tr>
@@ -198,6 +193,8 @@ $(function(){
   		<tr>
   			<td>
   				<input type="text" name="nickname" id="nickname" placeholder="닉네임을 입력하세요" style="margin-bottom: 5px"><br>
+  <!-- 	      		<div class="alert-success" id="success-nick">사용가능한 닉네임 입니다!</div>
+  				<div class="alert-fail" id="fail-nick">이미 사용중인 닉네임 입니다!</div> -->
   	      		<span id="niMessage" class="eMessage" style="margin-bottom: 20px"></span>
   	      	</td>
   	    </tr>  
@@ -224,7 +221,7 @@ $(function(){
   		  
   		<tr>
    			<td>
-    			<input type="submit" style="margin-top: 20px" name="signup_submit" class="button_login" value="회원가입하기" onclick="return inCheck()" disabled id="submit">
+    			<input type="submit" style="margin-top: 20px" name="signup_submit" class="button_login" value="회원가입하기" onclick="return inCheck()">
    			</td>
   		</tr>
  	</table>

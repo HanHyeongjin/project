@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>리뷰 등록</title>
-<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/headfoot/gameTopBar.jsp" flush="true" />

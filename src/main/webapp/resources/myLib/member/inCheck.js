@@ -1,7 +1,7 @@
 function idCheck(){
 	var id=$('#id').val();
 	
-	if(id.length < 5 || id.length >20 ){
+	if(id.length < 4 || id.length >20 ){
 		$('#iMessage').html('4~20 글자 이내만 사용가능합니다');
 		return false;
 	}else if (id.replace(/[a-z.0-9.{4,20}]/gi,'').length > 0){
@@ -13,6 +13,61 @@ function idCheck(){
 	}
 }
 
+function dupid(){
+	if (iCheck==false) {
+		iCheck=idCheck();
+	}else {
+		
+		$.ajax({
+			type:'Post',
+			url:'idcheck',
+			data:{
+				id:$('#id').val()
+			},
+			success:function(data){
+				if(data.idUse == "T"){	
+					$('#iMessage').html('사용가능한 아이디 입니다!');
+					
+					
+					checkid= true;
+				}else{					
+					$('#iMessage').html('사용중인 아이디 입니다!');		
+					checkid= false;
+				}
+			},
+			error:function(){
+				alert("error");
+			}
+		});
+	}
+}
+
+/*function dupnick(){
+	if(niCheck==false){
+		niCheck=nickCheck();
+	}else{
+		$.ajax({
+			type:'Post',
+			url:'nickCheck',
+			data: {
+				nickname :$('#nickname').val()	
+			},
+			success:function(data){
+				if(data.nickuse == "T"){
+					$('#niMessage').html('사용가능한 닉네임 입니다!');
+					checknick =true;
+				}else{
+					$('#niMessage').html('사용중인 닉네임 입니다!');
+					checknick = false;
+				}
+			},
+			error:function(){
+				alert("error");
+			}
+		});
+	}
+}
+*/
 function pwCheck(){
 	var password=$('#password1').val();
 		

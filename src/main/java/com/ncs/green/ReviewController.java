@@ -1,7 +1,6 @@
 package com.ncs.green;
 
-
-
+import java.lang.ProcessBuilder.Redirect;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,7 +13,6 @@ import service.GameService;
 import service.ReplService;
 import service.ReviewService;
 import vo.GameVO;
-import vo.ReplVO;
 import vo.ReviewVO;
 
 
@@ -61,33 +59,23 @@ public class ReviewController {
 
 
 		if(loginID != null) {
-			vo = gservice.gameInfo(vo);
 
+			vo = gservice.gameInfo(vo);
 			mv.addObject("game", vo);
 			mv.setViewName("review/reviewInsert");
-		}else {
-			mv.addObject("message", "로그인 후 이용가능한 서비스 입니다.");
-			mv.setViewName("member/loginForm");
-		}
-
-		return mv;
-	} //rinsertf
-
-	@RequestMapping(value = "/reviewinsert")
-	public ModelAndView reviewinsert(ModelAndView mv, GameVO gvo, ReviewVO rvo, HttpServletRequest request) {
-		String loginID = (String)request.getSession().getAttribute("loginID");
-		if(loginID != null) {
-			rvo.setId(loginID);
+			return mv;
+		} //rinsertf
+		
+		@RequestMapping(value = "/reviewinsert")
+		public ModelAndView reviewinsert(ModelAndView mv, GameVO gvo, ReviewVO rvo, HttpServletRequest request) {
+			rvo.setId((String)request.getSession().getAttribute("loginID"));
+			
+		
 			if(rservice.reviewInsert(rvo)>0){
-				gservice.gameGradePlus(rvo);
 				mv.setViewName("redirect:home");
 			}
-		}else {
-			mv.addObject("message", "로그인 후 이용가능한 서비스 입니다.");
-			mv.setViewName("member/loginForm");
-		}
-		return mv;
-	} //rinsert
-
-
+			return mv;
+		} //rinsertf
+		
+		
 } // class

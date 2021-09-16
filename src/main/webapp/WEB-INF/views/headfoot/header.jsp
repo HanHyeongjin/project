@@ -20,7 +20,6 @@
 			<c:if test="${loginID !=null}">
 			<a href="logout" class="mheader" id="logout">로그아웃</a>&nbsp;&nbsp;
 			<a href="myinfo" class="mheader" id="myinfo">내정보</a>&nbsp;&nbsp;
-			<a href="delete" class="mheader" id="delete">회원탈퇴</a>
 			</c:if>
 		</div>
 		

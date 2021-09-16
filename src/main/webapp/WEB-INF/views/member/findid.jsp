@@ -17,7 +17,6 @@ $(function(){
 	$('#name').focus();
 	$('#name').focusout(function(){
 		nCheck=naCheck();
-		
 	})//id_focusout
 	
 	$('#tel').focusout(function() {
@@ -25,9 +24,11 @@ $(function(){
 		
 	}); 
 	
+	
 }); //ready
 
-function inCheck(){
+
+ function iDfind(){
 	if(nCheck == false){
 		$('#nMessage').html('이름을 입력하세요');
 	}
@@ -36,9 +37,18 @@ function inCheck(){
 	}
 	if(iCheck && tCheck) return true;
 	else return false;
-}//incheck
+}//incheck 
 
 </script>
+<style>
+#findid-box{
+	margin: 0px 10px 8px 10px;
+    padding: 10px;
+    border: solid 10px #dadada;
+    width: 1000px;
+    background-color: rgba( 255, 255, 255, 0.5 );
+}
+</style>
 </head>
 <body>
 	<div style="position: fixed; z-index: 50"><jsp:include page="/WEB-INF/views/headfoot/header.jsp" flush="true" /></div>
@@ -49,7 +59,9 @@ function inCheck(){
 			 아이디 찾기
 		</div>
 	</div>	
-<table action="findid" align="center">
+<div align="center" class="container">	
+<form action="login" method="get" id="findid-box">	
+<table >
 	<tr>
   		<td class="blind">이름</td>
   	</tr>
@@ -64,17 +76,28 @@ function inCheck(){
   	</tr>
   	<tr>
   		<td style="padding-bottom: 30px">
-  			<input type="tel" id="tel" style="height: 30px" size="50" placeholder="(-)없이 입력해주세요"><br>
+  			<input type="tel" id="tel" style="height: 30px" size="50" placeholder="(-)없이 입력해주세요">
+  				<!-- <a href="https://www.naver.com"  class="button_login" ><span class="">인증번호 받기</span></a> -->
+  		<br>
+  	
   			<span id="tMessage" class="eMessage"></span>
   		</td>
   	</tr>
+ <!-- 	 <tr>
+ 	 	<td >
+ 	 	<span id="span_phoneAuthNo" class="phold">인증번호 6자리 숫자 입력</span><br>
  	 
+		<input type="text" id="phoneAuthNo" name="phoneAuthNo"  maxlength="6"  style="width:217px" ><br>
+ 	 	</td>
+ 	 </tr> -->	
   	<tr>
-  		<td align="right" style="margin-right: 0">
-  			<input type="submit" id="next_button" class="button_login" value="확인" onclick="return inCheck()">
+  		<td style="padding-top: 30px">
+  			<input type="submit" id="next_button" class="button_login" value="확인" onclick="return IDfind()">
   		</td>
   	</tr>
 </table>
+</form>
+</div>
 <jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
 </body>
 </html>
