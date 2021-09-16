@@ -11,7 +11,10 @@ import vo.ReviewVO;
 
 public interface ReplService {
 	
+	public int rreplInsert(ReplVO vo); 
 	public int replInsert(ReplVO vo); 
 	public List<ReplVO> replList(ReviewVO vo); 
+	public List<ReplVO> replListl(ReplVO vo); 
+	 public List<ReplVO> rreplList(ReplVO vo); 
 	
 }

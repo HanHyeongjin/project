@@ -6,8 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Game INFO</title>
+<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script>
-$('.repl').focusin(function() {
+$('.repl').focus(function() {
 	$(this).css({
 		borderBottom: "green"
 	});
@@ -19,7 +20,7 @@ $('.repl').focusin(function() {
 	href="resources/myLib/gamelib/detailReview.css">
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/headfoot/gameTopBar.jsp" flush="true" />
+	<jsp:include page="/WEB-INF/views/headfoot/gameTopBar.jsp" />
 	<div class="maininfo">
 		<div class="gameinfo">
 			<table class="infotable">

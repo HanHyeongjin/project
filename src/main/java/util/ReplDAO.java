@@ -14,12 +14,24 @@ import vo.ReviewVO;
 // ** Board CRUD
 // => selectList, selectOne, insert, update, delete 
 
-@Log4j
+
 @Repository
 public class ReplDAO {
 	@Autowired
 	SqlSession sqlSession;
 	private static final String NS="green.mapper.ReplMapper.";
+	
+	
+	 public List<ReplVO> rreplList(ReplVO vo) {
+	 
+	  return sqlSession.selectList(NS+"rreplList",vo); 
+	  }
+	 
+	
+	
+	public int rreplInsert(ReplVO vo) {
+		return sqlSession.insert(NS+"rreplInsert",vo);
+	} //insert
 	
 	public int replInsert(ReplVO vo) {
 		return sqlSession.insert(NS+"replInsert",vo);
@@ -30,4 +42,8 @@ public class ReplDAO {
 		return sqlSession.selectList(NS+"replList",vo);
 	}
 	
+public List<ReplVO> replListl(ReplVO vo) {
+		
+		return sqlSession.selectList(NS+"replListl",vo);
+	}
 } //class

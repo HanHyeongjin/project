@@ -3,16 +3,44 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="green.mapper.ReplMapper">
 
-	<select id="replList" resultType="vo.ReplVO">
-		select * from repl where rvno = #{rvno} and step = 0
+
+
+	<select id="rreplList" resultType="vo.ReplVO">
+		select id,replno, rpcontents,root,
+		rpredate, (select nickname from pmember p where p.id = r.id) nickname
+		from repl r where root = #{root} and step = 1 order by replno desc
+	</select> 
+
+
+	<select id="replListl" resultType="vo.ReplVO">
+		select id,replno, rpcontents,
+		rpredate, (select nickname from pmember p where p.id = r.id) nickname
+		from repl r where rvno = #{rvno} order by replno desc
 	</select>
-	
+
+
+	<select id="replList" resultType="vo.ReplVO">
+		select id,replno, rpcontents,root,
+		rpredate, (select nickname from pmember p where p.id = r.id) nickname
+		from repl r where rvno = #{rvno} and step =0 order by replno desc
+	</select>
+
 	<insert id="replInsert">
-		<selectKey keyProperty="replno" resultType="int" order="BEFORE">
+		<selectKey keyProperty="replno" resultType="int"
+			order="BEFORE">
 			select nvl(max(replno),0)+1 from repl
 		</selectKey>
-		insert into repl values ( 
-			#{replno},#{id},#{rvno},#{rpcontents},SYSDATE,#{replno},0)
+		insert into repl values (
+		#{replno},#{id},#{rvno},#{rpcontents},SYSDATE,#{replno},0)
+	</insert>
+
+	<insert id="rreplInsert">
+		<selectKey keyProperty="replno" resultType="int"
+			order="BEFORE">
+			select nvl(max(replno),0)+1 from repl
+		</selectKey>
+		insert into repl values (
+		#{replno},#{id},#{rvno},#{rpcontents},SYSDATE,#{root},#{step})
 	</insert>
 
 </mapper>  

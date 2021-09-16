@@ -73,7 +73,8 @@
 			<script>
 				$('#summernote').summernote({
 					tabSize : 2,
-					height : 300
+					height : "auto",
+					minHeight : 300
 				});
 			</script>
 			<div class="submitbtn" align="right">

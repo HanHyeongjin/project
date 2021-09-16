@@ -8,8 +8,6 @@ import org.springframework.stereotype.Repository;
 import lombok.extern.log4j.Log4j;
 import vo.ReviewVO;
 
-// ** Board CRUD
-// => selectList, selectOne, insert, update, delete 
 
 @Log4j
 @Repository
@@ -29,7 +27,7 @@ public class ReviewDAO {
 	
 	
 	public int reviewInsert(ReviewVO vo) {
-		return sqlSession.insert(NS+"insert",vo);
-	} //insert
+		return sqlSession.insert(NS+"reviewInsert",vo);
+	}
 	
 } //class

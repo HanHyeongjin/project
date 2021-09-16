@@ -1,7 +1,7 @@
 package com.ncs.green;
 
 
-import java.util.List;
+
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,21 +31,14 @@ public class ReviewController {
 	ReplService rpservice;
 
 	@RequestMapping(value = "/reviewdetail")
-	public ModelAndView reviewdetail(ModelAndView mv, GameVO gvo,ReviewVO rvo,HttpServletRequest request) {		
+	public ModelAndView reviewdetail(ModelAndView mv, GameVO gvo,ReviewVO rvo,ReplVO rpvo,HttpServletRequest request) {		
 		String loginID = (String)request.getSession().getAttribute("loginID");
 		if(loginID !=null) {
 			mv.addObject("loginID", loginID);
 
 
 			gvo = gservice.gameInfo(gvo);
-			rvo = rservice.reviewDetail(rvo);
-			List<ReplVO> list = rpservice.replList(rvo);
-			if(list != null && list.size() !=0) {
-				mv.addObject("repls", list);
-			}else {
-				mv.addObject("rpmessage", "작성된 댓글이 없습니다. 첫 댓글을 작성해 주세요");
-			}
-			
+			rvo = rservice.reviewDetail(rvo);			
 			if(rvo != null) {			
 				mv.addObject("game", gvo);
 				mv.addObject("review",rvo);
@@ -57,7 +50,7 @@ public class ReviewController {
 		}else {
 			mv.setViewName("member/loginForm");
 		}
-
+		
 		return mv;
 	} //reviewdetail
 
