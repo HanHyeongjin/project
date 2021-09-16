@@ -46,7 +46,8 @@ var replCheck=false;
 				alert(resultData.rpinmessage);
 				location.reload();
 			}else{
-				alert(resultData.rpinmessage);				
+				alert(resultData.rpinmessage);	
+				location.reload();		
 			}
 		},
 		error:function(){
@@ -54,7 +55,23 @@ var replCheck=false;
 		}
 	});
 	
+	
+	
 }); //repl_click
+
+$.ajax({
+		type:"get",
+		url:"repllist",
+		data:{
+			rvno : $('#replrvno').val()
+		},
+		success:function(result){	
+			$('#replListf').html(result);
+		},
+		error:function(){
+			$('#replListf').html("댓글이 하나도 없습니다. 첫 댓글을 입력해 주세요");
+		}
+	});
 
 $("textarea").on('keydown keyup', function () {
   $(this).height(1).height( $(this).prop('scrollHeight')+12 );	

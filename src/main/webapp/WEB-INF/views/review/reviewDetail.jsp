@@ -57,11 +57,7 @@ $(function () {
 						type="submit" id="replsumit" value="작성" class="replsubtn" disabled>
 				</div>
 			</form>
-			<c:if test="${rpmessage != null}">
-			${rpmessage}
-			</c:if>
-			
-			<jsp:include page="/WEB-INF/views/repl/replList.jsp" flush="true" />
+			<div id="replListf"></div>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />

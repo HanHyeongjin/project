@@ -38,7 +38,7 @@ public class MemberDAO {
 		return sqlsession.delete(NS+"delete",vo);
 	}
 	
-	public int findid(MemberVO vo) {
+	public List<MemberVO> findid(MemberVO vo) {
 		return sqlsession.selectOne(NS+"findid",vo);
 	}
 	

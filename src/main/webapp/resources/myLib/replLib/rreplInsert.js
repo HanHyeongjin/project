@@ -1,6 +1,33 @@
  var reCheck=false;
 var id
-	$(function () {				
+var rid;
+var did;
+	$(function () {		
+		
+		
+		$('.rpbtn').click(function(){
+		rid = $(this).attr('id');
+		$('#insert'+rid).show();
+	});
+	
+	$('.viewrrpl').click(function(){
+		id = $(this).attr('id');
+		$.ajax({
+			type:"get",
+			url:"rreplist",
+			data:{
+				root:$('#no'+id).val()
+			},
+			success:function(result){	
+			$('#div'+id).html(result);
+		},
+		error:function(){
+			
+		}			
+		});//ajax
+	}); //click
+		
+				
 		$('.rrepl').focus(function() {
 			
 			id = $(this).attr('id');
@@ -35,25 +62,36 @@ var id
 		}
 	});//repl.keyup	
 	
-	$('#subrepl'+id).click(function(){
-	
-	$.ajax({
+	/*$.ajax({
 		type:"get",
 		url:"rreplinsert",
-		dataType : 'json',
 		data:{
 			rvno : $('#rvno'+id).val(),
 			rpcontents:$('#'+id).val(),
 			root : $('#root'+id).val(),
 			step : $('#step'+id).val()
 		},
-		success:function(resultData){	
-			if(resultData.replins == 'T'){			
-				alert(resultData.rpinmessage);
-				location.reload();
-			}else{
-				alert(resultData.rpinmessage);				
-			}
+		success:function(result){	
+			$('.rreplresult').html(result);
+		},
+		error:function(){
+			alert("서버 Error");
+		}
+	});*/
+	
+	$('#subrepl'+id).click(function(){
+	
+	$.ajax({
+		type:"get",
+		url:"rreplinsert",
+		data:{
+			rvno : $('#rvno'+id).val(),
+			rpcontents:$('#'+id).val(),
+			root : $('#root'+id).val(),
+			step : $('#step'+id).val()
+		},
+		success:function(result){	
+			$('.rreplresult').html(result);
 		},
 		error:function(){
 			alert("서버 Error");

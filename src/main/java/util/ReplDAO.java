@@ -21,6 +21,14 @@ public class ReplDAO {
 	SqlSession sqlSession;
 	private static final String NS="green.mapper.ReplMapper.";
 	
+	
+	 public List<ReplVO> rreplList(ReplVO vo) {
+	 
+	  return sqlSession.selectList(NS+"rreplList",vo); 
+	  }
+	 
+	
+	
 	public int rreplInsert(ReplVO vo) {
 		return sqlSession.insert(NS+"rreplInsert",vo);
 	} //insert

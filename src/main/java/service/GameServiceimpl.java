@@ -7,18 +7,11 @@ import org.springframework.stereotype.Service;
 
 import util.GameDAO;
 import vo.GameVO;
-import vo.ReviewVO;
 
 @Service
 public class GameServiceimpl implements GameService{
 	@Autowired
 	GameDAO dao;
-	
-	@Override
-	public int gameGradePlus(ReviewVO vo) {
-		
-		return dao.gameGradePlus(vo);
-	}
 	
 	@Override
 	public GameVO gameInfo(GameVO vo) {

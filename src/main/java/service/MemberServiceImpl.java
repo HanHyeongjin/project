@@ -13,8 +13,6 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	MemberDAO dao;
 	
-	
-	
 	@Override
 	public List<MemberVO> selectList() {
 		return dao.selectList();
@@ -40,7 +38,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public int findid(MemberVO vo) {
+	public List<MemberVO> findid(MemberVO vo) {
 		return dao.findid(vo);
 	}
 	

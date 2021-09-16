@@ -21,6 +21,12 @@ public class ReplServiceImpl implements ReplService  {
 	@Autowired
 	ReplDAO dao;
 	
+	
+	  @Override public List<ReplVO> rreplList(ReplVO vo) { return
+	 dao.rreplList(vo);
+	
+	} 
+	
 	@Override
 	public List<ReplVO> replListl(ReplVO vo) {
 		

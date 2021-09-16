@@ -8,7 +8,8 @@
 <title>로그인</title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/memberStyle.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
-	<script src="resources/myLib/inCheck.js"></script>
+	<script src="resources/myLib/member/inCheck.js"></script>
+	<script src="resources/myLib/member/login.js"></script>
 <script>
 var iCheck=false;
 var pCheck=false;
@@ -35,8 +36,17 @@ function inCheck(){
 	if(pCheck == false){
 		$('#pMessage').html('비밀번호가 올바르지 않습니다');
 	}
-	if(iCheck && pCheck) return true;
-	else return false;
+	if(iCheck == ""){
+		$('#iMessage').html("아이디를 입력하세요");
+	}
+	if(pCheck == ""){
+		$('#pMessage').html("비밀번호를 입력하세요");
+	}
+	if(iCheck && pCheck){
+		return true;
+	}else{
+		return false;
+	}
 }//incheck
 
 </script>
@@ -71,7 +81,6 @@ function inCheck(){
 				<tr>
 					<td class="login-id-box" align="center">
 						<input type="submit" class="login" value="로그인" onclick="return inCheck()">&nbsp;
-					</td>
 				</tr>
 				<tr>
 					<td>

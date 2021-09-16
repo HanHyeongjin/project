@@ -15,4 +15,9 @@
 }
 .insertrrpl{
 	display: none;
+	
+}
+.rreplresult{
+	margin-left: 50px;
+	/* display: none; */
 }

@@ -4,27 +4,28 @@
   
  <mapper namespace="green.mapper.MemberMapper">
 
-
  
  	<select id="selectOne" resultType="vo.MemberVO">
  		select * from pmember where id = #{id}
  	</select>
-
+ 	
+ 	<select id="selectList" resultType="vo.MemberVO">
+ 		select * from pmember 
+ 	</select>	
  	
  	<insert id="insert">
  		insert into pmember values(
  		#{id},#{password},#{name},#{nickname}, #{tel}, #{email})
- 			</insert>
 
+ 	</insert>
  	
  	<update id="update">
  		update pmember set password = #{password}, name=#{name},lev=#{lev} , email = #{email} where id= #{id}
  	</update>
  	
  	<delete id="delete">
- 		delete from pmember where id=#{id}" 
+ 		delete from pmember where id=#{id} 
  	</delete>
-
  	
  	<select id="findid">
  		select * from pmember where name= #{name} and tel=#{tel}
