@@ -17,6 +17,7 @@ var niCheck=false;
 var tCheck=false;
 var eCheck=false; 
 var checkid=false;
+var checknick=false;
 
 $(function(){
 	
@@ -48,6 +49,16 @@ $('#id').focus();
 	
 	$('#nickname').focusout(function() {
 		niCheck=nickCheck();
+	 	checknick = dupnick(); 
+	 	if(niCheck== true){
+	 		$('#niMessage').css({
+	 			color:"green"
+	 		});
+	 	}else{
+	 		$('#niMessage').css({
+	 			color: "red"
+	 		});
+	 	}
 	});//nick_focusout
 	$('#tel').focusout(function() {
 		tCheck=telCheck();
@@ -77,13 +88,16 @@ function inCheck(){
 	if(niCheck == false){
 		$('#niMessage').html('필수정보입니다. 닉네임을 입력해주세요.');
 	}
+ 	if(checknick == false){
+		$('#niMessage').html('사용중인 닉네임 입니다!..');
+	} 
  	if(tCheck == false){
 		$('#tMessage').html('필수정보입니다. 번호를 입력해주세요.');
 	}
 	if(eCheck == false){
 		$('#eMessage').html('필수정보입니다. 이메일 주소를 입력해주세요.');
 	}  
-	if(iCheck && checkid && pCheck && nCheck && niCheck && tCheck && eCheck ) return true;
+	if(iCheck && checkid && pCheck && nCheck && niCheck && checknick && tCheck && eCheck ) return true;
 	else return false;
 }//incheck
 

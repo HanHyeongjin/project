@@ -9,6 +9,10 @@
  		select * from pmember where id = #{id}
  	</select>
  	
+ 	<select id="selectList" resultType="vo.MemberVO">
+ 		select * from pmember 
+ 	</select>	
+ 	
  	<insert id="insert">
  		insert into pmember values(
  		#{id},#{password},#{name},#{nickname}, #{tel}, #{email})
@@ -20,7 +24,7 @@
  	</update>
  	
  	<delete id="delete">
- 		delete from pmember where id=#{id}" 
+ 		delete from pmember where id=#{id} 
  	</delete>
  	
  	<select id="findid">
