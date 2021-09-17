@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>** I D 중복 확인 **</title>
-	<link rel="stylesheet" type="text/css" href="resources/myLib/memberStyle.css">
+	<link rel="stylesheet" type="text/css" href="resources/myLib/member/memberStyle.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
-	<script src="resources/myLib/inCheck.js"></script>
+	<script src="resources/myLib/member/inCheck.js"></script>
 <script>
 // 사용자가 입력한 id를 사용가능하도록 해주고, 현재(this)창은 close 
 function idOK(){

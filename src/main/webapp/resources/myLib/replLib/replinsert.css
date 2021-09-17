@@ -1,4 +1,4 @@
-.rrepl {
+.repl {
 	font-size: 1.2em;
 	font-weight:bold;
 	overflow:hidden;
@@ -13,22 +13,22 @@
 	border-left-width: 0;
 	border-right-width: 0;
 	margin-bottom: 0;
-	margin-top: 15px;
+
 	
 }
 
-.rrepl:focus {
+.repl:focus {
 	outline: none;
 }
 
 
-.rreplbtndiv {
+.replbtndiv {
 	visibility: hidden;
 	width: 70%;
 	text-align: right;
 }
 
-.rreplsubtn {
+.replsubtn {
 	border-radius: 15%;
 	font-weight: bold;
 	margin: 0 0 0 0;
@@ -37,7 +37,7 @@
 	width: 80px;
 	height: 40px;
 }
-.rreplrsbtn {
+.replrsbtn {
 	font-weight: bold;
 	margin: 3px 0 0 0;
 	border: none;

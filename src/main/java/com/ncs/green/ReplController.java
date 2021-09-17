@@ -91,25 +91,29 @@ public class ReplController {
 	} //rinsert
 
 	@RequestMapping(value = "/rreplinsert")
-	public ModelAndView rreviewinsert(ModelAndView mv,  ReplVO rpvo, HttpServletResponse response, HttpServletRequest request) {
+	public ModelAndView rreplinsert(ModelAndView mv,  ReplVO rpvo, HttpServletResponse response, HttpServletRequest request) {
 		response.setContentType("text/html; charset=UTF-8");
 		String loginID = (String)request.getSession().getAttribute("loginID");
 		
 		if(loginID != null) {
 			rpvo.setId(loginID);
-			System.out.println(rpvo);
 			if(rpservice.rreplInsert(rpvo)>0){
-				List<ReplVO> list = rpservice.rreplList(rpvo);
-				mv.addObject("rrepls", list);
-				mv.addObject("rpinmessage", "댓글이 등록되었습니다.");
+				if (rpvo.getStep() != 0) {
+					List<ReplVO> list = rpservice.repltwo(rpvo);
+					mv.addObject("rrepls", list);
+					
+				}else {
+					rpvo = rpservice.replone(rpvo);
+					mv.addObject("rrepls", rpvo);
+				}mv.setViewName("repl/rrplList");
+				mv.addObject("rrpinmessage", "답글이 등록되었습니다.");
 				mv.addObject("rreplin", "T");
-				mv.setViewName("repl/rreplList");
 			}else {
-				mv.addObject("rpinmessage", "댓글이 등록에 실패했습니다.");
+				mv.addObject("rrpinmessage", "답글이 등록에 실패했습니다.");
 			}
 		}else {
 			mv.addObject("message", "로그인 후 이용가능한 서비스 입니다.");
-			
+			mv.setViewName("member/loginForm");
 		}
 		return mv;
 	} //rinsert

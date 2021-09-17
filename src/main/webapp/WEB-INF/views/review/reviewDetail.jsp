@@ -54,7 +54,7 @@ $(function () {
 					placeholder="댓글 작성하기......" cols="100" rows="5"></textarea>
 				<div class="replbtndiv">
 					<input type="reset" value="취소" class="replrsbtn"> <input
-						type="submit" id="replsumit" value="작성" class="replsubtn" disabled>
+						type="button" id="replsumit" value="작성" class="replsubtn" disabled>
 				</div>
 			</form>
 			<div id="replListf"></div>

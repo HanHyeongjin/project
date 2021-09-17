@@ -5,24 +5,31 @@
 
 
 
+	<select id="replone" resultType="vo.ReplVO">
+		select id,replno, rpcontents,root,
+		rpredate, (select nickname from pmember p where p.id = r1.id) nickname
+		from repl r1 where replno = #{replno}
+	</select>
+
+	<select id="repltwo" resultType="vo.ReplVO">
+		select id,replno, rpcontents,root,
+		rpredate, (select nickname from pmember p where p.id = r1.id) nickname
+		from repl r1 where replno = #{replno} or (root =#{root} and step = 1) order by step asc
+	</select>
+	
+
 	<select id="rreplList" resultType="vo.ReplVO">
 		select id,replno, rpcontents,root,
-		rpredate, (select nickname from pmember p where p.id = r.id) nickname
-		from repl r where root = #{root} and step = 1 order by replno desc
+		rpredate, (select nickname from pmember p where p.id = r1.id) nickname
+		from repl r1 where root = #{root} and step = 1 order by replno desc
 	</select> 
 
 
-	<select id="replListl" resultType="vo.ReplVO">
-		select id,replno, rpcontents,
-		rpredate, (select nickname from pmember p where p.id = r.id) nickname
-		from repl r where rvno = #{rvno} order by replno desc
-	</select>
-
-
 	<select id="replList" resultType="vo.ReplVO">
-		select id,replno, rpcontents,root,
-		rpredate, (select nickname from pmember p where p.id = r.id) nickname
-		from repl r where rvno = #{rvno} and step =0 order by replno desc
+		select id,replno, rpcontents,root,rvno,
+		rpredate, (select nickname from pmember p where p.id = r1.id) nickname,
+		(select count(*)-1 from repl r2 where r1.root=r2.root) rreplcount
+		from repl r1 where rvno = #{rvno} and step =0 order by replno desc
 	</select>
 
 	<insert id="replInsert">
@@ -40,7 +47,7 @@
 			select nvl(max(replno),0)+1 from repl
 		</selectKey>
 		insert into repl values (
-		#{replno},#{id},#{rvno},#{rpcontents},SYSDATE,#{root},#{step})
+		#{replno},#{id},#{rvno},#{rpcontents},SYSDATE,#{root},1)
 	</insert>
 
 </mapper>  

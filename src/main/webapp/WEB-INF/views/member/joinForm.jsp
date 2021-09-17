@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-	<link rel="stylesheet" type="text/css" href="resources/myLib/memberStyle.css">
+<link rel="stylesheet" type="text/css" href="resources/myLib/member/memberStyle.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
-	<script src="resources/myLib/inCheck.js"></script>
+	<script src="resources/myLib/member/inCheck.js"></script>
 <script>
 var iCheck=false;
 var pCheck=false;

@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>내 정보</title>
-<link rel="stylesheet" type="text/css" href="resources/myLib/memberStyle.css">
-	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/myLib/member/memberStyle.css">
+	<script src="resources/myLib/member/jquery-3.2.1.min.js"></script>
 <script>
 
 </script>

@@ -16,5 +16,7 @@ public interface ReplService {
 	public List<ReplVO> replList(ReviewVO vo); 
 	public List<ReplVO> replListl(ReplVO vo); 
 	 public List<ReplVO> rreplList(ReplVO vo); 
+	 public List<ReplVO> repltwo(ReplVO vo);
+	 public ReplVO replone(ReplVO vo);
 	
 }

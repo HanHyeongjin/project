@@ -20,6 +20,11 @@ import vo.ReviewVO;
 public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	ReviewDAO dao;
+	
+	@Override
+	public ReviewVO reviewDetail(ReviewVO vo) {
+		return dao.reviewDetail(vo);
+	}
 
 	@Override
 	public List<ReviewVO> rInfoList(ReviewVO vo) {

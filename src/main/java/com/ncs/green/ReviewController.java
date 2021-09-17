@@ -1,6 +1,7 @@
 package com.ncs.green;
 
-import java.lang.ProcessBuilder.Redirect;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +14,7 @@ import service.GameService;
 import service.ReplService;
 import service.ReviewService;
 import vo.GameVO;
+import vo.ReplVO;
 import vo.ReviewVO;
 
 
@@ -29,17 +31,27 @@ public class ReviewController {
 	ReplService rpservice;
 
 	@RequestMapping(value = "/reviewdetail")
-	public ModelAndView reviewdetail(ModelAndView mv, GameVO gvo,ReviewVO rvo,ReplVO rpvo,HttpServletRequest request) {		
+	public ModelAndView reviewdetail(ModelAndView mv, GameVO gvo,ReviewVO rvo,HttpServletRequest request) {		
 		String loginID = (String)request.getSession().getAttribute("loginID");
 		if(loginID !=null) {
 			mv.addObject("loginID", loginID);
 
 
 			gvo = gservice.gameInfo(gvo);
-			rvo = rservice.reviewDetail(rvo);			
+			rvo = rservice.reviewDetail(rvo);
+			mv.addObject("game", gvo);
+			mv.addObject("review",rvo);
+			List<ReplVO> list = rpservice.replList(rvo);
+			if(list != null && list.size() !=0) {
+				mv.addObject("repls", list);
+				mv.setViewName("review/reviewDetail");
+			}else {
+				mv.addObject("rpmessage", "작성된 댓글이 없습니다. 첫 댓글을 작성해 주세요");
+				mv.setViewName("review/reviewDetail");
+			}
+			
 			if(rvo != null) {			
-				mv.addObject("game", gvo);
-				mv.addObject("review",rvo);
+				
 				mv.setViewName("review/reviewDetail");
 			}else {
 				mv.addObject("message", "해당하는 게시물을 찾을 수 없습니다.");
@@ -48,7 +60,7 @@ public class ReviewController {
 		}else {
 			mv.setViewName("member/loginForm");
 		}
-		
+
 		return mv;
 	} //reviewdetail
 
@@ -59,23 +71,33 @@ public class ReviewController {
 
 
 		if(loginID != null) {
-
 			vo = gservice.gameInfo(vo);
+
 			mv.addObject("game", vo);
 			mv.setViewName("review/reviewInsert");
-			return mv;
-		} //rinsertf
-		
-		@RequestMapping(value = "/reviewinsert")
-		public ModelAndView reviewinsert(ModelAndView mv, GameVO gvo, ReviewVO rvo, HttpServletRequest request) {
-			rvo.setId((String)request.getSession().getAttribute("loginID"));
-			
-		
+		}else {
+			mv.addObject("message", "로그인 후 이용가능한 서비스 입니다.");
+			mv.setViewName("member/loginForm");
+		}
+
+		return mv;
+	} //rinsertf
+
+	@RequestMapping(value = "/reviewinsert")
+	public ModelAndView reviewinsert(ModelAndView mv, GameVO gvo, ReviewVO rvo, HttpServletRequest request) {
+		String loginID = (String)request.getSession().getAttribute("loginID");
+		if(loginID != null) {
+			rvo.setId(loginID);
 			if(rservice.reviewInsert(rvo)>0){
+				gservice.gameGradePlus(rvo);
 				mv.setViewName("redirect:home");
 			}
-			return mv;
-		} //rinsertf
-		
-		
+		}else {
+			mv.addObject("message", "로그인 후 이용가능한 서비스 입니다.");
+			mv.setViewName("member/loginForm");
+		}
+		return mv;
+	} //rinsert
+
+
 } // class
