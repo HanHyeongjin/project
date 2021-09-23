@@ -1,0 +1,18 @@
+.rrpupbtn {
+	border-radius: 15%;
+	font-weight: bold;
+	margin: 0 0 0 0;
+	border: none;
+	background: rgba(0, 0, 0, 0.15);
+	width: 80px;
+	height: 40px;
+}
+.rrupdatecancel {
+	font-weight: bold;
+	margin: 3px 0 0 0;
+	border: none;
+	background: white;
+	width: 80px;
+	height: 40px;
+	cursor: pointer;
+}

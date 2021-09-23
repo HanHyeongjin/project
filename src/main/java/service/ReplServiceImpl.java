@@ -22,28 +22,28 @@ public class ReplServiceImpl implements ReplService  {
 	ReplDAO dao;
 
 	@Override
-	public List<ReplVO> repltwo(ReplVO vo) {
+	public int rpdelete(ReplVO vo) {
+		return dao.rpdelete(vo);
+	}
 		
+	@Override
+	public int rpupdate(ReplVO vo) {
+		return dao.rpupdate(vo);
+	}
+	
+	@Override
+	public List<ReplVO> repltwo(ReplVO vo) {
 		return dao.repltwo(vo);
 	}
 
 	@Override
 	public ReplVO replone(ReplVO vo) {
-		// TODO Auto-generated method stub
 		return dao.replone(vo);
 	}
 
 	@Override public List<ReplVO> rreplList(ReplVO vo) { return
 			dao.rreplList(vo);
-
 	} 
-
-	@Override
-	public List<ReplVO> replListl(ReplVO vo) {
-
-		return dao.replListl(vo);
-	}
-
 	@Override
 	public int rreplInsert(ReplVO vo) {
 		return dao.rreplInsert(vo);
@@ -54,9 +54,14 @@ public class ReplServiceImpl implements ReplService  {
 		return dao.replInsert(vo);
 	}
 	@Override
-	public List<ReplVO> replList(ReviewVO vo) {
-
-		return dao.replList(vo);
+	public List<ReplVO> replrecList(ReviewVO vo) {
+		return dao.replrecList(vo);
 	}
-
+	 @Override public List<ReplVO> replpopList(ReviewVO vo) {
+	 return dao.replpopList(vo); 
+	 }
+	 @Override public List<ReplVO> replmyList(ReviewVO vo) {
+		 return dao.replmyList(vo); 
+		 }
+		 
 } //class

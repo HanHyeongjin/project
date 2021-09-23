@@ -2,12 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="green.mapper.ReviewMapper">
-
-	<!-- 리뷰 상세보기 -->
-	<select id="reviewDetail" resultType="vo.ReviewVO">
+<sql id="reviewlist">
 		select id, rtitle, rcontents, rvno,idno,score,
 		TO_CHAR(rvredate, '""YYYY"년 "MM"월 "DD"일"') rvredate,
-		 (select nickname from pmember p where p.id = r.id) nickname
+		 (select nickname from pmember p where p.id = r.id) nickname,
+		 (select count(*) from repl rp where r.rvno = rp.rvno) rpcount
+		 </sql>
+	<!-- 리뷰 상세보기 -->
+	<select id="reviewDetail" resultType="vo.ReviewVO">
+		<include refid="reviewlist"></include>
 		  from review r where rvno = ${rvno}
 	</select>
 	<!-- 리뷰작성 -->
@@ -21,9 +24,7 @@
 	
 	<!-- 리뷰리스트_게임INFO -->
 	<select id="rInfoList" resultType="vo.ReviewVO">
-		select id, rtitle, rcontents, rvno,idno,score,
-		TO_CHAR(rvredate, '""YYYY"년 "MM"월 "DD"일"') rvredate,
-		 (select nickname from pmember p where p.id = r.id) nickname
+		<include refid="reviewlist"></include>
 		  from review r where idno = ${idno}
 	</select>
 

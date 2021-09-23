@@ -61,9 +61,9 @@ var replCheck=false;
 
 $.ajax({
 		type:"get",
-		url:"repllist",
+		url:"replreclist",
 		data:{
-			rvno : $('#replrvno').val()
+			rvno : $('#replrvno').val(),
 		},
 		success:function(result){	
 			$('#replListf').html(result);

@@ -3,34 +3,50 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="green.mapper.ReplMapper">
 
+<sql id="rplist">
+		select id,replno, rpcontents,root,rvno,
+		rpredate, (select nickname from pmember p where p.id = r1.id) nickname,
+		(select nvl(rpli,0)from rplike rpl where rpl.id = #{id} and rpl.replno=r1.replno)rplionoff,
+		(select count(*)from rplike rpl where rpl.rpli = 1 and r1.replno=rpl.replno)rplicount,
+		(select count(*)from rplike rpl where rpl.rpli = 2 and r1.replno=rpl.replno)rpdislicount
+		
+</sql>
 
-
-	<select id="replone" resultType="vo.ReplVO">
-		select id,replno, rpcontents,root,
-		rpredate, (select nickname from pmember p where p.id = r1.id) nickname
-		from repl r1 where replno = #{replno}
-	</select>
-
-	<select id="repltwo" resultType="vo.ReplVO">
-		select id,replno, rpcontents,root,
-		rpredate, (select nickname from pmember p where p.id = r1.id) nickname
-		from repl r1 where replno = #{replno} or (root =#{root} and step = 1) order by step asc
-	</select>
+	<delete id="rpdelete">
+	delete from repl where replno = #{replno}
+	</delete>
+	
+	<update id="rpupdate">
+		update repl set rpcontents = #{rpcontents}, rpredate=sysdate where replno = #{replno}
+	</update>
 	
 
 	<select id="rreplList" resultType="vo.ReplVO">
-		select id,replno, rpcontents,root,
-		rpredate, (select nickname from pmember p where p.id = r1.id) nickname
+		<include refid="rplist"></include>
 		from repl r1 where root = #{root} and step = 1 order by replno desc
 	</select> 
 
-
-	<select id="replList" resultType="vo.ReplVO">
-		select id,replno, rpcontents,root,rvno,
-		rpredate, (select nickname from pmember p where p.id = r1.id) nickname,
-		(select count(*)-1 from repl r2 where r1.root=r2.root) rreplcount
-		from repl r1 where rvno = #{rvno} and step =0 order by replno desc
+	<!-- 최신순 정렬 -->
+	<select id="replrecList" resultType="vo.ReplVO">	
+		<include refid="rplist"></include>
+		,(select count(*)-1 from repl r2 where r1.root=r2.root) rreplcount
+		from repl r1 where rvno = #{rvno} and step =0 order by rpredate desc
 	</select>
+	<!-- 인기순 정렬 -->
+	<select id="replpopList" resultType="vo.ReplVO">
+		<include refid="rplist"></include>
+		,((select count(*)from rplike rpl where rpl.rpli = 1 and r1.replno=rpl.replno)-(select count(*)from rplike rpl where rpl.rpli = 2 and r1.replno=rpl.replno)) pop
+		,(select count(*)-1 from repl r2 where r1.root=r2.root) rreplcount
+		from repl r1 where rvno = #{rvno} and step =0 order by pop desc
+	</select> 
+	<!-- 내가 쓴 글 정렬 -->
+	<select id="replmyList" resultType="vo.ReplVO">
+		<include refid="rplist"></include>
+		,(select count(*)-1 from repl r2 where r1.root=r2.root) rreplcount
+		from repl r1 where rvno = #{rvno} and step =0 and id = #{id} order by  rpredate desc
+	</select> 
+	
+	
 
 	<insert id="replInsert">
 		<selectKey keyProperty="replno" resultType="int"

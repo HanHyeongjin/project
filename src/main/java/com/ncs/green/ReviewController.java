@@ -41,7 +41,7 @@ public class ReviewController {
 			rvo = rservice.reviewDetail(rvo);
 			mv.addObject("game", gvo);
 			mv.addObject("review",rvo);
-			List<ReplVO> list = rpservice.replList(rvo);
+			List<ReplVO> list = rpservice.replrecList(rvo);
 			if(list != null && list.size() !=0) {
 				mv.addObject("repls", list);
 				mv.setViewName("review/reviewDetail");

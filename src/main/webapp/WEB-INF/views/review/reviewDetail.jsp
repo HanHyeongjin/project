@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css"
 	href="resources/myLib/reviewLib/rdetail.css">
 <script src="resources/myLib/replLib/replInsert.js"></script>
+<script src="resources/myLib/reviewLib/rplistType.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="resources/myLib/replLib/replinsert.css">
 
@@ -23,6 +24,7 @@ $(function () {
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/headfoot/gameTopBar.jsp" flush="true" />
+
 
 	<div class="rdbody">
 		<div class="title">${review.rtitle}</div>
@@ -44,12 +46,11 @@ $(function () {
 		</div>
 		<div class="hrdiv"></div>
 
-		<div class="contents">${review.rcontents}</div>
+		<div class="contents" style="width: 70%">${review.rcontents}</div>
 		<div class="hrdiv">댓글</div>
 		<div>
 			<form>
-				<input type="hidden" id="replrvno" value="${review.rvno}"
-					name="rvno">
+				<input type="hidden" id="replrvno" value="${review.rvno}">
 				<textarea id="repl" class="repl" name="rpcontents"
 					placeholder="댓글 작성하기......" cols="100" rows="5"></textarea>
 				<div class="replbtndiv">
@@ -57,9 +58,23 @@ $(function () {
 						type="button" id="replsumit" value="작성" class="replsubtn" disabled>
 				</div>
 			</form>
+			<div class="rvrpinfo">
+				<div style="margin-right: 80px">댓글 ${review.rpcount}개</div>
+				<div>
+					<div class="listType">
+						<img src="resources/image/rplist.png" width="20px" height="20px">
+						정렬 기준
+					</div>
+					<div class="selectrplist">
+						<div id="poplist">인기 댓글순</div>
+						<div id="reclist" class="selected">최신 댓글순</div>
+						<div id="mylist">내가 쓴 댓글</div>
+					</div>
+				</div>
+			</div>
 			<div id="replListf"></div>
 		</div>
 	</div>
-	<jsp:include page="/WEB-INF/views/headfoot/footer.jsp" flush="true" />
+
 </body>
 </html>
