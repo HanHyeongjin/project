@@ -8,6 +8,9 @@
  	<select id="selectOne" resultType="vo.MemberVO">
  		select * from pmember where id = #{id}
  	</select>
+ 	<select id="selectNick" resultType="vo.MemberVO">
+ 		select * from pmember where nickname = #{nickname}
+ 	</select>
  	
  	<select id="selectList" resultType="vo.MemberVO">
  		select * from pmember 
@@ -27,11 +30,11 @@
  		delete from pmember where id=#{id} 
  	</delete>
  	
- 	<select id="findid">
- 		select * from pmember where name= #{name} and tel=#{tel}
+ 	<select id="findid" resultType="vo.MemberVO">
+ 		select id from pmember where name= #{name} and tel=#{tel}
  	</select>
  	
- 	<select id="findpassword">
+ 	<select id="findpassword" resultType="vo.MemberVO" >
  		select * from pmember where id = #{id} and email=#{email}
  	</select>
  	

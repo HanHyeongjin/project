@@ -27,6 +27,25 @@ function telCheck(){
 	}	
 }
 
-function findid(){
+$(function(){	
 	
-}
+	$('#next_button').click(function(){
+		$.ajax({
+			type: "post",
+			url : "findid",
+			data:{
+				name:$('#name').val(),
+				tel:$('#tel').val()
+			},
+			success:function(result){
+				$('#iddiv').html(result);
+			},
+			error:function(){
+			 alert("해당되는 정보가 없습니다.");
+			}
+		})
+	
+	})
+	
+}); //ready
+

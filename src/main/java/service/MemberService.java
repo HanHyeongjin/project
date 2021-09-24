@@ -10,6 +10,7 @@ public interface MemberService {
 	List<MemberVO> selectList();
 	
 	MemberVO selectOne(MemberVO vo);
+	MemberVO selectNick(MemberVO vo);
 	
 	int insert(MemberVO vo);
 	int update(MemberVO vo);

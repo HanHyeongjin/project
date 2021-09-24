@@ -1,6 +1,7 @@
 package com.ncs.green;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -136,28 +137,17 @@ public class MemberController {
 		mv.setViewName("member/findid");
 		return mv;
 	}
-//
-//	@RequestMapping(value = "/findid")
-//	public ModelAndView findid(ModelAndView mv, MemberVO vo) {
-//		List <MemberVO> list = service.findid(vo);
-//
-//		if(list != null) {
-//			mv.addObject("findID",list);
-//		}else {
-//			mv.addObject("findID", "T");
-//			mv.addObject("message","가입된 아이디가 없습니다");
-//		}
-//		mv.setViewName("member/findidForm");
-//		return mv;
-//	}
 	
 	@RequestMapping(value = "/findid")
-	public ModelAndView findid(ModelAndView mv, MemberVO vo) {
-		mv.addObject("newID", vo.getId());
-		if (service.selectOne(vo) != null) {
-			  mv.addObject("idUse", "F"); // 사용불가
-		}else mv.addObject("idUse", "T"); // 사용가능
-		mv.setViewName("member/findid");
+	public ModelAndView findid(ModelAndView mv, MemberVO vo) throws Exception{
+		List<MemberVO> memlist = service.findid(vo);
+		
+		if(memlist != null && memlist.size() !=0) {
+			mv.addObject("findid", memlist);
+			mv.setViewName("member/idfind");
+		}else {
+					
+		}
 		return mv;
 	} //idCheck
 
@@ -191,37 +181,7 @@ public class MemberController {
 		}
 		return mv;
 	}//login
-	
-	// ** Json Login
-	@RequestMapping(value = "/jslogin")
-	public ModelAndView jslogin(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, MemberVO vo) {
-		
-		//jsonView 사용시 response의 한글처리
-		response.setContentType("text/html; charset=UTF-8");
-		
-		String password = vo.getPassword();
-		vo = service.selectOne(vo);
-		if (vo != null) {
-			if (vo.getPassword().equals(password)) {
-				// 로그인 성공 : 로그인정보 session에 보관,  home으로
-				mv.addObject("loginSuccess", "T");
-				request.getSession().setAttribute("loginID",vo.getId());
-				request.getSession().setAttribute("loginName",vo.getName());
-				mv.setViewName("redirect:home");
-			}else {
-				// password 오류 : message , 재로그인 유도 (loginForm 으로)
-				mv.addObject("loginSuccess", "F");
-				mv.addObject("message"," password 오류 !! 다시 하세요 ~~");
-				mv.setViewName("member/loginForm");
-			}
-		}else {
-			// ID 오류
-			mv.addObject("loginSuccess", "F");
-			mv.addObject("message"," ID 오류 !! 다시 하세요 ~~");
-		}
-		mv.setViewName("jsonView");
-		return mv;
-	} //jslogin
+
 	
 
 	// ** ID 중복확인
@@ -237,14 +197,14 @@ public class MemberController {
 	
 	
 //	// ** nick 중복확인
-//	@RequestMapping(value = "/nickCheck")
-//	public ModelAndView nickCheck(ModelAndView mv, MemberVO vo) {
-//		if (service.selectOne(vo) != null) {
-//			mv.addObject("nickuse", "F"); // 사용불가
-//		}else mv.addObject("nickuse", "T"); // 사용가능
-//		mv.setViewName("jsonView");
-//		return mv;
-//	} 
+	@RequestMapping(value = "/nickCheck")
+	public ModelAndView nickCheck(ModelAndView mv, MemberVO vo) {
+		if (service.selectNick(vo) != null) {
+			mv.addObject("nickuse", "F"); // 사용불가
+		}else mv.addObject("nickuse", "T"); // 사용가능
+		mv.setViewName("jsonView");
+		return mv;
+	} 
 
 	@RequestMapping(value = "/joinf")
 	public ModelAndView joinf(ModelAndView mv ,MemberVO vo) {

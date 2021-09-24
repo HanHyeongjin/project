@@ -17,6 +17,7 @@ var niCheck=false;
 var tCheck=false;
 var eCheck=false; 
 var checkid=false;
+var checknick=false;
 
 $(function(){
 	
@@ -25,15 +26,8 @@ $('#id').focus();
 	$('#id').focusout(function(){
 		iCheck=idCheck();
 		checkid=dupid();
-		if(checkid ==true ){
-			$('#iMessage').css({
-				color: "green"
-			});
-		}else{
-			$('#iMessage').css({
-				color: "red"
-			});
-		}
+		
+		
 	})//id_focusout 
 	
 	$('#password1').focusout(function() {
@@ -48,6 +42,10 @@ $('#id').focus();
 	
 	$('#nickname').focusout(function() {
 		niCheck=nickCheck();
+		
+		checknick=dupnick();
+		
+		
 	});//nick_focusout
 	$('#tel').focusout(function() {
 		tCheck=telCheck();
@@ -76,6 +74,9 @@ function inCheck(){
 	}
 	if(niCheck == false){
 		$('#niMessage').html('필수정보입니다. 닉네임을 입력해주세요.');
+	}
+	if(checknick == false){
+		$('#niMessage').html('중보된 닉네임 입니다.');
 	}
  	if(tCheck == false){
 		$('#tMessage').html('필수정보입니다. 번호를 입력해주세요.');
@@ -151,7 +152,7 @@ $(function(){
   		<tr>
     		<td>
      			<input type="text" name="id" id="id" placeholder="아이디를 입력하세요" ><br>
-     			<span id="iMessage"  ></span>&nbsp;&nbsp;
+     			<span id="iMessage" class="eMessage" ></span>&nbsp;&nbsp;
     		</td>
     		<td>
   	 			<!-- <input type="button" style="width: 120px; height: 80px" value="id중복확인" id="checkid" onclick="idDupCheck()"> -->

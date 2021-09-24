@@ -26,12 +26,14 @@ function dupid(){
 			},
 			success:function(data){
 				if(data.idUse == "T"){	
-					$('#iMessage').html('사용가능한 아이디 입니다!');
-					
-					
+					$('#iMessage').html('사용가능한 아이디 입니다!').css({
+						color:"green"
+					});
 					checkid= true;
 				}else{					
-					$('#iMessage').html('사용중인 아이디 입니다!');		
+					$('#iMessage').html('사용중인 아이디 입니다!').css({
+						color:"red"
+					});		
 					checkid= false;
 				}
 			},
@@ -42,7 +44,7 @@ function dupid(){
 	}
 }
 
-/*function dupnick(){
+function dupnick(){
 	if(niCheck==false){
 		niCheck=nickCheck();
 	}else{
@@ -53,12 +55,16 @@ function dupid(){
 				nickname :$('#nickname').val()	
 			},
 			success:function(data){
-				if(data.nickuse == "T"){
-					$('#niMessage').html('사용가능한 닉네임 입니다!');
-					checknick =true;
-				}else{
-					$('#niMessage').html('사용중인 닉네임 입니다!');
-					checknick = false;
+				if(data.nickuse == "T"){	
+					$('#niMessage').html('사용가능한 닉네임 입니다!').css({
+						color:"green"
+					});
+					checknick= true;
+				}else{					
+					$('#niMessage').html('사용중인 닉네임 입니다!').css({
+						color:"red"
+					});		
+					checknick= false;
 				}
 			},
 			error:function(){
@@ -66,8 +72,8 @@ function dupid(){
 			}
 		});
 	}
-}
-*/
+}//
+
 function pwCheck(){
 	var password=$('#password1').val();
 		
