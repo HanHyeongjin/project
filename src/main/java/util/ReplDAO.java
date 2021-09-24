@@ -21,7 +21,13 @@ public class ReplDAO {
 	SqlSession sqlSession;
 	private static final String NS="green.mapper.ReplMapper.";
 
-
+	public int rpdelete(ReplVO vo) {
+		return sqlSession.delete(NS+"rpdelete",vo);
+	}
+	public int rpupdate(ReplVO vo) {
+		return sqlSession.update(NS+"rpupdate",vo);
+	}
+	
 	public List<ReplVO> repltwo(ReplVO vo) {
 		return sqlSession.selectList(NS+"repltwo",vo);
 	}
@@ -41,15 +47,15 @@ public class ReplDAO {
 
 	public int replInsert(ReplVO vo) {
 		return sqlSession.insert(NS+"replInsert",vo);
-	} //insert
-
-	public List<ReplVO> replList(ReviewVO vo) {
-
-		return sqlSession.selectList(NS+"replList",vo);
+	} //insert	
+	public List<ReplVO> replrecList(ReviewVO vo) {
+		return sqlSession.selectList(NS+"replrecList",vo);
 	}
-
-	public List<ReplVO> replListl(ReplVO vo) {
-
-		return sqlSession.selectList(NS+"replListl",vo);
-	}
+	
+	 public List<ReplVO> replpopList(ReviewVO vo) {
+		 return sqlSession.selectList(NS+"replpopList",vo); 
+	 }
+	 public List<ReplVO> replmyList(ReviewVO vo) {
+		 return sqlSession.selectList(NS+"replmyList",vo); 
+	 }
 } //class

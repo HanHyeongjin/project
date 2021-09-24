@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import service.GameService;
 import service.ReviewService;
@@ -83,13 +82,10 @@ public class GameController {
 		}
 		vo.setImg(file2); // Table 저장 경로 set
 
-		System.out.println("game VO =>"+vo);
 		if (gservice.gameinsert(vo) > 0) {
-			// Join 성공 -> 로그인 유도
 			mv.addObject("message", "게임이 추가되었습니다.");
 			mv.setViewName("redirect:gamelist");
 		}else {
-			// Join 실패 -> 재가입 유도
 			mv.addObject("message", "게임 추가중 오류가 발생했습니다.");
 			mv.setViewName("game/gameInsertForm");
 		}

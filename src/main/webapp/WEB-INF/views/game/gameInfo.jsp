@@ -68,7 +68,9 @@ $('.repl').focus(function() {
 			<div class="box3text">
 				<a href="reviewinsertf?idno=${game.idno}">리뷰 쓰기</a>
 			</div>
-			<div class="box3text">리뷰 보기</div>
+			<div class="box3text">
+				<a href="reviewlist?idno=${game.idno}">리뷰 보기</a>
+			</div>
 		</div>
 	</div>
 
@@ -99,6 +101,10 @@ $('.repl').focus(function() {
 							<div class="rdiv4">
 								<img src="resources/image/date.png" width="20px" height="20px">
 								${list.rvredate}
+							</div>
+							<div class="rdiv4">
+								<img src="resources/image/write.png" width="20px" height="20px">
+								${list.rpcount}
 							</div>
 						</div>
 					</div>

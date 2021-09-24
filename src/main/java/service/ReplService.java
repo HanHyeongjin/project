@@ -10,13 +10,12 @@ import vo.ReviewVO;
 
 
 public interface ReplService {
-	
+	public int rpdelete(ReplVO vo);
+	public int rpupdate(ReplVO vo);
 	public int rreplInsert(ReplVO vo); 
 	public int replInsert(ReplVO vo); 
-	public List<ReplVO> replList(ReviewVO vo); 
-	public List<ReplVO> replListl(ReplVO vo); 
-	 public List<ReplVO> rreplList(ReplVO vo); 
-	 public List<ReplVO> repltwo(ReplVO vo);
-	 public ReplVO replone(ReplVO vo);
-	
+	public List<ReplVO> replpopList(ReviewVO vo); 
+	public List<ReplVO> replrecList(ReviewVO vo); 
+	public List<ReplVO> replmyList(ReviewVO vo); 
+	public List<ReplVO> rreplList(ReplVO vo); 
 }

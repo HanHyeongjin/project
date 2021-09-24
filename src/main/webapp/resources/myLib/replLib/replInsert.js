@@ -61,9 +61,9 @@ var replCheck=false;
 
 $.ajax({
 		type:"get",
-		url:"repllist",
+		url:"replreclist",
 		data:{
-			rvno : $('#replrvno').val()
+			rvno : $('#replrvno').val(),
 		},
 		success:function(result){	
 			$('#replListf').html(result);
@@ -76,6 +76,7 @@ $.ajax({
 $("textarea").on('keydown keyup', function () {
   $(this).height(1).height( $(this).prop('scrollHeight')+12 );	
 });
+
 });//ready
 function rpCheck(){
 	var repl=$('#repl').val().replace(/\s|　/gi, '');		

@@ -46,3 +46,10 @@
 	height: 40px;
 	cursor: pointer;
 }
+.notlogin{
+	width: 70%;
+	font-size: 1.3em;
+	text-align: center;
+	margin: 30px;
+	
+}

@@ -1,4 +1,5 @@
  var reCheck=false;
+var ruCheck=false;
 var id
 var rid;
 var bid;
@@ -35,7 +36,7 @@ var bid;
 		$(this).html("▼ 답글 보기");	
 		$('#div'+id).html("");
 	}
-	}); //click
+	}); //답글 보기 숨기기
 		
 		
 				
@@ -46,7 +47,7 @@ var bid;
 				borderColor: "black"
 			});
 			$('#btn'+rid).css({
-				visibility: "visible"
+				display : 'block'
 			});
 		});//focus
 		
@@ -71,8 +72,8 @@ var bid;
 					cursor: "default"
 			});
 		}
-	});//repl.keyup	
-		
+	});//답글 작성 	
+	
 $('.rreplsubtn').click(function(){
 	var sid = $(this).attr('id');
 	
@@ -84,15 +85,24 @@ $('.rreplsubtn').click(function(){
 			rpcontents:$('.rrepl'+sid).val(),
 			root : $('#root'+sid).val()			
 		},
-		success:function(result){	
-			$('#iddiv').html(result);
+		success:function(result){
+			alert("답글이 작성되었습니다.")
+			$('.insertrrpl').css('display','none');
+			$('.rrepl').val('');
+			$('#sub'+rid).prop("disabled",true).css({
+					background :"rgba(0, 0, 0, 0.15)",
+					color:"black",
+					cursor: "default"
+			});
+			$('.div'+sid).html("▲ 답글 숨기기");
+			$('.view'+sid).html(result);
 		},
 		error:function(){
 			alert("답글등록 실패");
 		}
 	});
 	
-}); //click
+}); //답글 등록
 
 
 

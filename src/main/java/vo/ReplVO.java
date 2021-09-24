@@ -14,4 +14,8 @@ public class ReplVO {
 	private String rpredate;
 	private String nickname;
 	private int rreplcount;
+	private int rplicount;
+	private int rpdislicount;
+	private int rplionoff;
+	private int pop;
 } //class

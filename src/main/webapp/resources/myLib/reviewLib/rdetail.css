@@ -52,9 +52,40 @@
 	font-size: 1.5em;
 	margin: 3% 0 3% 0;
 }
-
-
-
 .star{
 	color: red;
+}
+.rvrpinfo{
+	margin-bottom: 50px;
+	display: flex;
+}
+.rvrpinfo div{
+	font-size : 20px;
+}
+.listType{
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.selectrplist{
+	border : 1px solid;
+	border-color:rgba(0, 0, 0, 0.15);
+	background : White ;
+	position: absolute;
+	display: none;
+	cursor: pointer;
+}
+.selectrplist div{
+	border-top : 1px;
+	padding: 15px 0 15px 0;
+}
+.selected{
+	background:rgba(0, 0, 0, 0.15);
+}
+.messege {
+  background: rgba(0,0,0,.3);
+  border-radius: 10px;
+  padding: 15px 20px;
+  position: absolute;
+  bottom: 50px;
+  display: none;
 }

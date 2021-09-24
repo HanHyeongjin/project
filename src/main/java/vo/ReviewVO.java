@@ -13,5 +13,6 @@ public class ReviewVO {
 	private String rvredate;
 	private String nickname;
 	private int score;
+	private int rpcount; 
 
 } //class

@@ -4,7 +4,7 @@
 	overflow:hidden;
 	height:30px;
 	min-height: 10px;
-	width: 70%;
+	width: 100%;
 	resize:none;
 	text-decoration: none;
 	border-color: rgba(0, 0, 0, 0.15);
@@ -23,8 +23,8 @@
 
 
 .rreplbtndiv {
-	visibility: hidden;
-	width: 70%;
+	display:none;
+	width: 100%;
 	text-align: right;
 }
 
@@ -38,6 +38,24 @@
 	height: 40px;
 }
 .rreplrsbtn {
+	font-weight: bold;
+	margin: 3px 0 0 0;
+	border: none;
+	background: white;
+	width: 80px;
+	height: 40px;
+	cursor: pointer;
+}
+.rpupbtn {
+	border-radius: 15%;
+	font-weight: bold;
+	margin: 0 0 0 0;
+	border: none;
+	background: rgba(0, 0, 0, 0.15);
+	width: 80px;
+	height: 40px;
+}
+.updatecancel {
 	font-weight: bold;
 	margin: 3px 0 0 0;
 	border: none;

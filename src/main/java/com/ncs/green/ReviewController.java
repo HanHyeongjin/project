@@ -33,15 +33,12 @@ public class ReviewController {
 	@RequestMapping(value = "/reviewdetail")
 	public ModelAndView reviewdetail(ModelAndView mv, GameVO gvo,ReviewVO rvo,HttpServletRequest request) {		
 		String loginID = (String)request.getSession().getAttribute("loginID");
-		if(loginID !=null) {
 			mv.addObject("loginID", loginID);
-
-
 			gvo = gservice.gameInfo(gvo);
 			rvo = rservice.reviewDetail(rvo);
 			mv.addObject("game", gvo);
 			mv.addObject("review",rvo);
-			List<ReplVO> list = rpservice.replList(rvo);
+			List<ReplVO> list = rpservice.replrecList(rvo);
 			if(list != null && list.size() !=0) {
 				mv.addObject("repls", list);
 				mv.setViewName("review/reviewDetail");
@@ -57,13 +54,24 @@ public class ReviewController {
 				mv.addObject("message", "해당하는 게시물을 찾을 수 없습니다.");
 				mv.setViewName("redirect:gameinfo");
 			}
+		
+		return mv;
+	} //reviewdetail
+	@RequestMapping(value = "/reviewlist")
+	public ModelAndView reviewlist(ModelAndView mv, GameVO gvo,ReviewVO rvo,HttpServletRequest request) {		
+		List<ReviewVO> rlist = rservice.rInfoList(rvo);
+		gvo = gservice.gameInfo(gvo);
+		mv.addObject("game", gvo);
+		if(rlist != null && rlist.size() !=0) {
+			mv.addObject("reviews", rlist);
+			mv.setViewName("review/reviewList");
 		}else {
-			mv.setViewName("member/loginForm");
+			mv.addObject("rpmessage", "등록된 리뷰 없습니다. 첫 리뷰를 작성해 주세요");
+			mv.setViewName("review/reviewList");
 		}
 
 		return mv;
 	} //reviewdetail
-
 
 	@RequestMapping(value = "/reviewinsertf")
 	public ModelAndView reviewinsertf(ModelAndView mv, GameVO vo, HttpServletRequest request) {
