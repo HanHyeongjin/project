@@ -197,14 +197,14 @@ public class MemberController {
 	
 	
 //	// ** nick 중복확인
-//	@RequestMapping(value = "/nickCheck")
-//	public ModelAndView nickCheck(ModelAndView mv, MemberVO vo) {
-//		if (service.selectOne(vo) != null) {
-//			mv.addObject("nickuse", "F"); // 사용불가
-//		}else mv.addObject("nickuse", "T"); // 사용가능
-//		mv.setViewName("jsonView");
-//		return mv;
-//	} 
+	@RequestMapping(value = "/nickCheck")
+	public ModelAndView nickCheck(ModelAndView mv, MemberVO vo) {
+		if (service.selectNick(vo) != null) {
+			mv.addObject("nickuse", "F"); // 사용불가
+		}else mv.addObject("nickuse", "T"); // 사용가능
+		mv.setViewName("jsonView");
+		return mv;
+	} 
 
 	@RequestMapping(value = "/joinf")
 	public ModelAndView joinf(ModelAndView mv ,MemberVO vo) {

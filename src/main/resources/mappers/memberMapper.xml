@@ -8,6 +8,9 @@
  	<select id="selectOne" resultType="vo.MemberVO">
  		select * from pmember where id = #{id}
  	</select>
+ 	<select id="selectNick" resultType="vo.MemberVO">
+ 		select * from pmember where nickname = #{nickname}
+ 	</select>
  	
  	<select id="selectList" resultType="vo.MemberVO">
  		select * from pmember 
