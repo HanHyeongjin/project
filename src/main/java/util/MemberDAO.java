@@ -39,7 +39,7 @@ public class MemberDAO {
 	}
 	
 	public List<MemberVO> findid(MemberVO vo) {
-		return sqlsession.selectOne(NS+"findid",vo);
+		return sqlsession.selectList(NS+"findid",vo);
 	}
 	
 	public int findpassword(MemberVO vo) {
