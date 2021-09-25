@@ -84,11 +84,12 @@ function inCheck(){
 	if(eCheck == false){
 		$('#eMessage').html('필수정보입니다. 이메일 주소를 입력해주세요.');
 	}  
-	if(iCheck && checkid && pCheck && nCheck && niCheck && tCheck && eCheck ) return true;
+	if(iCheck && checkid && pCheck && nCheck && niCheck && tCheck && eCheck ){
+		alert('회원 가입 되었습니다.! ');
+		return true;
+	}
 	else return false;
 }//incheck
-
-
 
 //비밀번호 확인
 $(function(){
@@ -113,13 +114,6 @@ $(function(){
 	
 });
 
-//닉네임 확인
-/* $(function(){
-	$('#success-nick').hide();
-	$('$fail-nick').hide();
-	$('input').keyup(function(){
-	
-}); */
 </script>
 <style>
  #success-nick{

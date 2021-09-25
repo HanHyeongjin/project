@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +22,8 @@ public class MemberController {
 
 	@Autowired
 	MemberService service;
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	// ** Update
 	@RequestMapping(value = "/mupdate")
@@ -58,7 +61,7 @@ public class MemberController {
 					vo.setPassword((String)session.getAttribute("loginPW"));
 				}else {
 					mv.setViewName("member/memberDetail");
-					vo.setPassword("*****"); // ~Detail.jsp 에서 표시하지 않아도 됨.
+					vo.setPassword("*******"); 
 				}
 				mv.addObject("Apple", vo);
 			}else {
@@ -161,12 +164,19 @@ public class MemberController {
 	public ModelAndView login(HttpServletRequest request, ModelAndView mv, MemberVO vo) {
 		String password =vo.getPassword();
 		vo = service.selectOne(vo);
+		String diest1 = passwordEncoder.encode(password) ;
+		System.out.println("digest1 => "+diest1);
+		System.out.println("** matches1 => "+passwordEncoder.matches(password, diest1));
 
 		HttpSession session = request.getSession();
 		if(vo != null) {
-			if(vo.getPassword().equals(password)) {
+			//if(vo.getPassword().equals(password)) {
+			// ** BCryptPasswordEncoder 적용
+			// => passwordEncoder.matches(rawData, digest) -> (입력값, DB에보관된값_digest)
+			if (passwordEncoder.matches(password, vo.getPassword())) { 	
 				session.setAttribute("loginID", vo.getId());
 				session.setAttribute("loginName", vo.getName());
+				session.setAttribute("loginPW",password);
 				mv.setViewName("redirect:home");
 			}else {
 				// 비밀번호 오류
@@ -181,9 +191,7 @@ public class MemberController {
 		}
 		return mv;
 	}//login
-
 	
-
 	// ** ID 중복확인
 
 	@RequestMapping(value = "/idcheck")
@@ -196,7 +204,7 @@ public class MemberController {
 	} //idCheck
 	
 	
-//	// ** nick 중복확인
+	// ** nick 중복확인
 	@RequestMapping(value = "/nickCheck")
 	public ModelAndView nickCheck(ModelAndView mv, MemberVO vo) {
 		if (service.selectNick(vo) != null) {
@@ -214,6 +222,12 @@ public class MemberController {
 
 	@RequestMapping(value = "/join")
 	public ModelAndView join(ModelAndView mv, MemberVO vo, HttpServletRequest request) throws IOException{
+		
+		// ** Password 암호화
+		// => BCryptPasswordEncoder 적용
+		//    encode(rawData) -> digest 생성 & vo 에 set  
+		vo.setPassword(passwordEncoder.encode(vo.getPassword()));
+		
 		if(service.insert(vo) > 0) {
 			//성공
 			mv.setViewName("member/loginForm");
@@ -224,7 +238,5 @@ public class MemberController {
 		}
 		return mv;
 	}//join
-
-
 
 }
